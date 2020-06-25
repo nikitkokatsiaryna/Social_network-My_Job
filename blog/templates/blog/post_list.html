@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    {% for user in users %}
+        <div class="post">
+            <div class="date">
+                <h1>{{ user.name }}</h1>
+            </div>
+
+{#            <h1><a href="{% url 'blog:user_details' pk=user.pk %}">{{ user.name }}</a></h1>#}
+
+            <p>{{ user.date_of_bd }}</p>
+        </div>
+    {% endfor %}
+
+{#    <a href="{% url 'blog:user_new' %}" class="top-menu"><span class="glyphicon"></span></a>#}
+
+{% endblock %}

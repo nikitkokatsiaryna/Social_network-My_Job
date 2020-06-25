@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+{% block title %}Friends{% endblock %}
+{% block content %}
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="Send e-mail">
+    </form>
+{% endblock %}

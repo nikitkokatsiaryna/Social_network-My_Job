@@ -1,0 +1,26 @@
+
+.popover-header, .navbar-brand, .btn-light {
+    font-size: 2rem !important;
+    margin-top: auto;
+}
+
+.popover-header {
+    background-color: transparent;
+}
+
+.navbar-logo img {
+    width: 100px;
+}
+
+.navbar-logo {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-link {
+    color: red;
+}
+
+.div .navbar-nav {
+    margin-top: 100px;
+}

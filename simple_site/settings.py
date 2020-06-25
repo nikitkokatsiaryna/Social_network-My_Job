@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'riddles',
+    'blog',
+    'user_account',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'simple_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,20 +70,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'simple_site.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': os.path.join(BASE_DIR, 'db.mysql'),
+        'OPTIONS': {
+            'read_default_file': '~/PycharmProjects/example_simple_site/my.cnf',
+            "init_command": "SET foreign_key_checks = 0;",
+        },
     }
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
+# DATABASES = {
+# 'default': {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'NAME': 'website',
+#     'USER': 'root',
+#     # 'PASSWORD': 'password', #mysql password
+#     'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+#     'PORT': '3306',
+# }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -100,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -114,8 +121,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# LOGIN_REDIRECT_URL : Сообщает о том, на какой URL-адрес перенаправлять пользователя после входа в систему.
+# LOGIN_URL : URL-адрес для перенаправления пользователя на вход (например, с помощью декоратора login_required)
+# LOGOUT_URL : URL-адрес для перенаправления пользователя на выход
+
+# Можно сделать двумя способами:
+
+# LOGIN_REDIRECT_URL = '/'
+# LOGIN_URL = '/login/'
+# LOGOUT_URL = '/logout/'
+
+LOGIN_REDIRECT_URL = reverse_lazy('blog:user_page')
+LOGIN_URL = reverse_lazy('blog:login')
+LOGOUT_URL = reverse_lazy('blog:logout')
