@@ -1,41 +1,85 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/index.html' %}
+{% load static %}
 
 {% block content %}
+    <div class="row">
+        <!-- MAIN -->
+        <main class="col-md-8 col-lg-9">
+            <div class="card card-body">
 
-    <div class="card">
-        <div class="card-header">
-            Опыт работы
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-1"></button>
-        </div>
-    </div>
+                <div class="card">
+                    <div class="card-header">
+                        Experience
+                    </div>
+                    <div class="card-body">
+                        {% for field in experience %}
+                            <ul class="list-group list-group-flush">
+                                <a href="/user/detail/{{ field.id }}" class="list-group-item">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <h5 class="mb-1">{{ field.position }}</h5>
+                                        <h5 class="mb-1">{{ field.company }}</h5>
+                                        <h5 class="mb-1">{{ field.date_start }}</h5>
+                                        <h5 class="mb-1">{{ field.date_end }}</h5>
+                                        <h5 class="mb-1">{{ field.region }}</h5>
+                                    </div>
+                                </a>
+                            </ul>
+                        {% endfor %}
+                        <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#experienceModal">
+                            Add experience
+                        </button>
+                    </div>
+                </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="modal-1" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Опыт работы</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="card">
+                    <div class="card-header">
+                        Education
+                    </div>
+                    <div class="card-body">
+
+                        {% for field in education %}
+                            <ul class="list-group list-group-flush">
+                                <a href="#" class="list-group-item">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <h5 class="mb-1">{{ field.institution }}</h5>
+                                    </div>
+                                </a>
+                            </ul>
+                        {% endfor %}
+
+                        <button id="button-education" class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#educationModal"> Go to popup education
+                        </button>
+
+                    </div>
                 </div>
-                <div class="modal-body">
-                    {% for experience in experience_fields %}
-                        {{ experience.position }}
-                        {{ experience.type_employment }}
-                    {% endfor %}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+
+        </main>
+
+        <!-- ASIDE -->
+        <div class="col-md-4 col-lg-3">
+            <div class="row">
+                <!-- ASIDE #1 -->
+                <aside class="col-sm-6 col-md-12">
+                    <div>{{ experience }}</div>
+                </aside>
+
+                <!-- ASIDE #2 -->
+                <aside class="col-sm-6 col-md-12">
+                </aside>
+                <div class="row">
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal experience -->
+    {% include 'blog/experience.html' %}
+
+    <!-- Modal education-->
+    {% include 'blog/education.html' %}
+
 
 {% endblock %}

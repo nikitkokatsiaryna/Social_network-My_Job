@@ -1,7 +1,5 @@
 {% load static %}
-
 <h1>Log-in</h1>
-
 {% if form.errors %}
     <p>
         Your username and password didn't match.
@@ -11,17 +9,15 @@
     <p>Please, use the following form to log-in:</p>
 {% endif %}
 
-
-<div class="form">
-
-    <form method="post">
+<div class="login-form">
+    <form action="{% url 'blog:login' %}" method="post">
         {% csrf_token %}
         <div class="imgcontainer">
-            <img src={% static 'img/imgonline-com-ua-Transparent-backgr-DFNX8ceua6.png' %} width='' alt="Avatar"
-                 class="avatar">
+            <img src={% static 'img/imgonline-com-ua-Transparent-backgr-DFNX8ceua6.png' %} alt="Avatar" class="avatar">
         </div>
 
         <div class="container">
+            <div class="container-title">FREE SIGNUP</div>
             <label for="uname"><b>Username</b></label>
             <input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username"
                    required>
@@ -31,5 +27,5 @@
             <button class="btn-login" type="submit">Login</button>
         </div>
     </form>
-
 </div>
+
