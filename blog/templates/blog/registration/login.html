@@ -1,3 +1,4 @@
+{% include 'blog/main/../index.html' %}
 {% load static %}
 
 <h1>Log-in</h1>
@@ -7,29 +8,31 @@
         Your username and password didn't match.
         Please try again.
     </p>
+
 {% else %}
     <p>Please, use the following form to log-in:</p>
 {% endif %}
 
+<div class="container">
 
-<div class="form">
+    <div class="form">
+        <form method="post">
+            {% csrf_token %}
+            <div class="imgcontainer">
+                <img src={% static 'img/logo.png' %} width='' alt="Avatar"
+                     class="avatar">
+            </div>
 
-    <form method="post">
-        {% csrf_token %}
-        <div class="imgcontainer">
-            <img src={% static 'img/imgonline-com-ua-Transparent-backgr-DFNX8ceua6.png' %} width='' alt="Avatar"
-                 class="avatar">
-        </div>
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username"
+                       required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" class="form-control" name="password" id="inputPass" placeholder="Password"
+                       required>
+                <button class="btn-login" type="submit">Login</button>
+            </div>
+        </form>
 
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username"
-                   required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" class="form-control" name="password" id="inputPass" placeholder="Password"
-                   required>
-            <button class="btn-login" type="submit">Login</button>
-        </div>
-    </form>
-
+    </div>
 </div>

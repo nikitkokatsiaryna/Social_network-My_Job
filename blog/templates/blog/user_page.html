@@ -14,7 +14,9 @@
                     <div class="card-body">
                         {% for field in experience %}
                             <ul class="list-group list-group-flush">
-                                <a href="/user/detail/{{ field.id }}" class="list-group-item">
+
+                                <a href="#" class="list-group-item" data-toggle="modal"
+                                data-target="#experienceUpdateModal">
                                     <div class="d-sm-flex justify-content-between">
                                         <h5 class="mb-1">{{ field.position }}</h5>
                                         <h5 class="mb-1">{{ field.company }}</h5>
@@ -25,7 +27,7 @@
                                 </a>
                             </ul>
                         {% endfor %}
-                        <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                        <button class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#experienceModal">
                             Add experience
                         </button>
@@ -48,7 +50,7 @@
                             </ul>
                         {% endfor %}
 
-                        <button id="button-education" class="btn btn-outline-success" data-toggle="modal"
+                        <button class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#educationModal"> Go to popup education
                         </button>
 
@@ -76,10 +78,11 @@
     </div>
 
     <!-- Modal experience -->
-    {% include 'blog/experience.html' %}
+    {% include 'blog/experience/experience_create.html' %}
+    {% include 'blog/experience/experience_update.html' %}
 
     <!-- Modal education-->
-    {% include 'blog/education.html' %}
+    {% include 'blog/education/education_create.html' %}
 
 
 {% endblock %}

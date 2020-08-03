@@ -11,6 +11,7 @@ $('#experienceForm').on('submit', (event) => {
     event.stopPropagation();
     const form = event.currentTarget;
 
+
     $.ajax({
         type: form.method,
         url: form.action,
@@ -29,10 +30,9 @@ $('#experienceForm').on('submit', (event) => {
 });
 
 
-
-
 $('#educationForm').on('submit', (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
 
     $.ajax({

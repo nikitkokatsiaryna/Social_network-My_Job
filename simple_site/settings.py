@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'user_account',
+    'django_seed',
+
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,6 @@ STATIC_URL = '/static/'
 # LOGIN_URL = '/login/'
 # LOGOUT_URL = '/logout/'
 
-LOGIN_REDIRECT_URL = reverse_lazy('blog:user_page')
+LOGIN_REDIRECT_URL = reverse_lazy('blog:user_page_url')
 LOGIN_URL = reverse_lazy('blog:login')
-LOGOUT_URL = reverse_lazy('blog:logout')
+LOGOUT_URL = reverse_lazy('blog:logout_then_login')

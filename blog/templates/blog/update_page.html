@@ -7,7 +7,7 @@
         <p>Страница редактирования</p>
 
 
-        <form id="update_date" method="post" action="{% url 'blog:user_experience' %}">
+        <form id="update_date" method="post">
             {% csrf_token %}
             <div class="form-group">
                 {% for field in form %}

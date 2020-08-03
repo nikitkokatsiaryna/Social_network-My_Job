@@ -13,19 +13,25 @@
             </div>
             <div class="modal-body">
 
-                <form id="educationForm" method="POST" action="{% url 'blog:user_education' %}">
+                <form id="educationForm" method="POST" action="{% url 'blog:education_create_url' %}">
                     {% csrf_token %}
+                    {% for field in form_education %}
+                        <div class="form-group">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
 
-                    <div class="form-group">
-                        {% for field in form_education %}
-                            {{ field.label_tag }}
-                            {{ field }}
-                        {% endfor %}
+                        {{ field.label_tag }}
+                        {{ field }}
+                    {% endfor %}
                     </div>
                 </form>
 
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button form="educationForm" class="btn btn-outline-success" id="modal-education-btn" type="submit"
                         value="Send">Add
                 </button>

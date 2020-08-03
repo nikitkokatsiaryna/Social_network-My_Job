@@ -16,8 +16,8 @@ class ExperienceForm(forms.ModelForm):
 
     class Meta:
         model = Experience
-        # fields = {"position"}
-        fields = '__all__'
+        fields = {"position"}
+        # fields = '__all__'
         employment_choices = (
             # ('Empty', '-'),
             ('FD', 'Full work day'),
