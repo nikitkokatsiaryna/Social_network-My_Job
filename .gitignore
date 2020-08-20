@@ -1,4 +1,9 @@
 db.sqlite3
 .idea
 /imgrations/
+.DS_Store/
+__pycache__/
+node_modules
+blog/static/libs/
+blog/static/.DS_Store
 .DS_Store

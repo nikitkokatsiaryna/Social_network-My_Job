@@ -2,37 +2,16 @@
 {% load static %}
 
 {% block content %}
+
     <div class="row">
         <!-- MAIN -->
         <main class="col-md-8 col-lg-9">
             <div class="card card-body">
 
-                <div class="card">
-                    <div class="card-header">
-                        Experience
-                    </div>
-                    <div class="card-body">
-                        {% for field in experience %}
-                            <ul class="list-group list-group-flush">
-
-                                <a href="#" class="list-group-item" data-toggle="modal"
-                                data-target="#experienceUpdateModal">
-                                    <div class="d-sm-flex justify-content-between">
-                                        <h5 class="mb-1">{{ field.position }}</h5>
-                                        <h5 class="mb-1">{{ field.company }}</h5>
-                                        <h5 class="mb-1">{{ field.date_start }}</h5>
-                                        <h5 class="mb-1">{{ field.date_end }}</h5>
-                                        <h5 class="mb-1">{{ field.region }}</h5>
-                                    </div>
-                                </a>
-                            </ul>
-                        {% endfor %}
-                        <button class="btn btn-outline-success" data-toggle="modal"
-                                data-target="#experienceModal">
-                            Add experience
-                        </button>
-                    </div>
+                <div data-load=true data-controller="experience--index">
                 </div>
+
+
 
                 <div class="card">
                     <div class="card-header">
@@ -40,21 +19,28 @@
                     </div>
                     <div class="card-body">
 
-                        {% for field in education %}
-                            <ul class="list-group list-group-flush">
-                                <a href="#" class="list-group-item">
-                                    <div class="d-sm-flex justify-content-between">
-                                        <h5 class="mb-1">{{ field.institution }}</h5>
-                                    </div>
-                                </a>
-                            </ul>
-                        {% endfor %}
-
-                        <button class="btn btn-outline-success" data-toggle="modal"
-                                data-target="#educationModal"> Go to popup education
+                        <button id='addEducation' class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#modal"> Add education
                         </button>
 
                     </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        Certificates
+                    </div>
+
+                    <div class="card-body">
+
+{#                        <div data-controller="experiences">#}
+{#                        </div>#}
+
+                        <button id='addSertificates' class="btn btn-outline-success" data-toggle="modal"
+                                data-target="#modal"> Add sertificates
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
@@ -77,12 +63,16 @@
         </div>
     </div>
 
-    <!-- Modal experience -->
-    {% include 'blog/experience/experience_create.html' %}
-    {% include 'blog/experience/experience_update.html' %}
 
-    <!-- Modal education-->
-    {% include 'blog/education/education_create.html' %}
+
+
+    <!-- Modal experience -->
+    {#        {% include 'blog/experiences/index.html' %}#}
+    {##}
+    {#    {% include 'blog/experiences/experience_update.html' %}#}
+    {##}
+    {#    <!-- Modal education-->#}
+    {#    {% include 'blog/education/education_create.html' %}#}
 
 
 {% endblock %}

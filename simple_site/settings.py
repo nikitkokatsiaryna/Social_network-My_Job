@@ -82,7 +82,6 @@ DATABASES = {
     }
 }
 
-
 # DATABASES = {
 # 'default': {
 #     'ENGINE': 'django.db.backends.mysql',
@@ -126,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = ['dist']
 
 # LOGIN_REDIRECT_URL : Сообщает о том, на какой URL-адрес перенаправлять пользователя после входа в систему.
 # LOGIN_URL : URL-адрес для перенаправления пользователя на вход (например, с помощью декоратора login_required)

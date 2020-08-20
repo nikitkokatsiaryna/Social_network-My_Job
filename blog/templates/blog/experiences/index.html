@@ -1,0 +1,35 @@
+<div class="card" data-controller="experience--index">
+
+    <div class="card-header">
+        Experience
+    </div>
+
+    <div class="card-body">
+        <ul class="list-group">
+            {% for experience in experiences %}
+
+                <a href="#" class="experience list-group-item list-group-item-action mb-2"
+                   data-action="click->experience--index#editForm"
+                   data-toggle="modal"
+                   data-target="#modal" data-id={{ experience.id }}>
+
+                    <div class="d-sm-flex justify-content-between">
+                        <i class="fas fa-city"></i>
+                        <p class="mb-1">{{ experience.position }}</p>
+                        <p class="mb-1">{{ experience.company }}</p>
+                        <p class="mb-1">{{ experience.date_start }}</p>
+                        <p class="mb-1">{{ experience.date_end }}</p>
+                        <p class="mb-1">{{ experience.region }}</p>
+                    </div>
+                </a>
+
+            {% endfor %}
+        </ul>
+
+        <button data-action="click->experience--index#loadForm" class="btn btn-outline-success" data-toggle="modal"
+                data-target="#modal"> Add experience
+        </button>
+
+    </div>
+
+</div>

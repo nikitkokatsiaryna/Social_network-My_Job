@@ -1,46 +1,46 @@
-<!-- Modal experience -->
+<!-- Modal education create-->
 {% load static %}
 
 {% block content %}
 
-    <div class="modal" id="experienceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    <div class="modal" id="educationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Experience</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Education</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="modal-close" aria-hidden="true">&times</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <form id="experienceForm" method="post" action="{% url 'blog:experience_create_url' %}">
+                    <form id="educationForm" method="post" action="{% url 'blog:education_create_url' %}">
                         {% csrf_token %}
-                        {% for field in form_experience %}
+
+                        {% for field in form_education %}
                             <div class="form-group">
-                            {% if field.errors %}
-                                <div class="alert alert-danger">
-                                    {{ field.errors }}
-                                </div>
-                            {% endif %}
-                            {{ field.label_tag }}
-                            {{ field }}
+                                {% if field.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
                         {% endfor %}
-                        </div>
+
                     </form>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button form="experienceForm" class="btn btn-outline-success" id="modal-experience-btn"
+                    <button form="educationForm" class="btn btn-outline-success" id="modal-experience-btn"
                             type="submit" value="Send">Add
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="{% static 'js/blog.js' %}"></script>
 
 {% endblock %}

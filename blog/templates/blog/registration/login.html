@@ -1,38 +1,73 @@
-{% include 'blog/main/../index.html' %}
+{% include 'blog/index.html' %}
 {% load static %}
 
-<h1>Log-in</h1>
-
 {% if form.errors %}
-    <p>
-        Your username and password didn't match.
-        Please try again.
-    </p>
-
-{% else %}
-    <p>Please, use the following form to log-in:</p>
-{% endif %}
-
-<div class="container">
 
     <div class="form">
         <form method="post">
             {% csrf_token %}
-            <div class="imgcontainer">
-                <img src={% static 'img/logo.png' %} width='' alt="Avatar"
-                     class="avatar">
+            <div class="container">
+                <div class="login-box d-flex flex-column">
+
+                    <div class="imgcontainer">
+                        <img src={% static 'img/logo.png' %} width='' alt="Avatar"
+                             class="avatar">
+                    </div>
+
+                    <div class="log_in_message font-weight-bold">LOG IN</div>
+
+                    <p class="login_message">
+                        Your username and password didn't match.
+                        Please try again.
+                    </p>
+
+                    <input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username"
+                           required>
+                    <input type="password" class="form-control" name="password" id="inputPass" placeholder="Password"
+                           required>
+                    <button class="btn-login" type="submit">Login</button>
+                    <div style='text-align: center'><a href="{% url 'blog:register' %}">I DON'T HAVE AN ACCOUNT YET</a>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username"
-                       required>
-                <label for="psw"><b>Password</b></label>
-                <input type="password" class="form-control" name="password" id="inputPass" placeholder="Password"
-                       required>
-                <button class="btn-login" type="submit">Login</button>
-            </div>
         </form>
 
     </div>
-</div>
+
+{% else %}
+
+    <div class="container">
+
+        <div class="form">
+            <form method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="login-box d-flex flex-column">
+
+                        <div class="imgcontainer">
+                            <img src={% static 'img/logo.png' %} width='' alt="Avatar"
+                                 class="avatar">
+                        </div>
+                        <div class="log_in_message font-weight-bold">LOG IN</div>
+
+                        <input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username"
+                               required>
+                        <input type="password" class="form-control" name="password" id="inputPass"
+                               placeholder="Password"
+                               required>
+                        <button class="btn-login" type="submit">Login</button>
+                        <div style='text-align: center'><a href="{% url 'blog:register' %}">I DON'T HAVE AN ACCOUNT
+                            YET</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endif %}

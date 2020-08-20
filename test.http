@@ -1,0 +1,2 @@
+GET http://127.0.0.1:8000/experiences/
+Cookie: sessionid=1pm17uxh5lg70shl3cunqb23j9xbkhmr
