@@ -30,28 +30,28 @@
 // });
 //
 //
-// $('#experienceUpdateForm').on('submit', (event) => {
-//     event.preventDefault();
-//     event.stopPropagation();
-//     const form = event.currentTarget;
+$('#experienceUpdateForm').on('submit', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const form = event.currentTarget;
 //
 //
-//     $.ajax({
-//         type: form.method,
-//         url: form.action,
-//         data: $(event.currentTarget).serialize(),
-//         success: (response) => {
-//             $('#experienceUpdateModal .modal-body').html(response);
-//             toastr.success('Successfully created.')
-//             $(".modal-close").trigger("click");
-//             $('.modal').fadeOut();
-//         },
+    $.ajax({
+        type: form.method,
+        url: form.action,
+        data: $(event.currentTarget).serialize(),
+        success: (response) => {
+            $('#experienceUpdateModal .modal-body').html(response);
+            toastr.success('Successfully created.')
+            $(".modal-close").trigger("click");
+            $('.modal').fadeOut();
+        },
 //
-//         error: (xhr, errmsg, err) => {
-//             toastr.error(errmsg)
-//         },
-//     });
-// });
+        error: (xhr, errmsg, err) => {
+            toastr.error(errmsg)
+        },
+    });
+});
 
 // $('#addExperience').on('click', (event) => {
 //     $.ajax({

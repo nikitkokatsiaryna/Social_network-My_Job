@@ -25,6 +25,7 @@ class ExperienceForm(forms.ModelForm):
         widgets = {
             'type_employment': forms.Select(choices=employment_choices, attrs={'class': 'form-control'}),
             'date_start': forms.SelectDateWidget(attrs={'class': 'form-control'}),
+            'date_end': forms.SelectDateWidget(attrs={'class': 'form-control'}),
         }
 
         labels = {

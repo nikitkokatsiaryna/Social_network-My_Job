@@ -1,35 +1,112 @@
 <div class="card" data-controller="experience--index">
-
-    <div class="card-header">
+    <h5 class="card-header">
         Experience
-    </div>
+        <button data-action="click->experience--index#loadForm" class="btn btn-outline-success float-right"
+                data-toggle="modal"
+                data-target="#modal"> Add experience
+        </button>
+    </h5>
 
-    <div class="card-body">
-        <ul class="list-group">
-            {% for experience in experiences %}
+    {#        <table class="table col-lg-10">#}
+    {#            <thead>#}
+    {#            <tr>#}
+    {#                <th scope="col"></th>#}
+    {#                <th scope="col">Position</th>#}
+    {#                <th scope="col">Company</th>#}
+    {#                <th scope="col">Data start</th>#}
+    {#                <th scope="col">Date end</th>#}
+    {#                <th scope="col">Region</th>#}
+    {#                <th scope="col">Description</th>#}
+    {#            </tr>#}
+    {#            </thead>#}
+    {#            <tbody>#}
+    {#            {% for experience in experiences %}#}
+    {#                <tr class="experience"#}
+    {#                    data-action="click->experience--index#editForm"#}
+    {#                    data-toggle="modal"#}
+    {#                    data-target="#modal"#}
+    {#                    data-id={{ experience.id }}>#}
+    {##}
+    {#                    <td><i class="fas fa-city"></i></td>#}
+    {#                    <td>{{ experience.position }}</td>#}
+    {#                    <td>{{ experience.company }}</td>#}
+    {#                    <td>{{ experience.date_start }}</td>#}
+    {#                    <td>{{ experience.date_end }}</td>#}
+    {#                    <td>{{ experience.region }}</td>#}
+    {#                    <td class="text-description">{{ experience.description }}</td>#}
+    {#                </tr>#}
+    {##}
+    {#                <tr class="col-sm-1">#}
+    {#                    <td align="center">#}
+    {#                        <button class="col-lg-11">delete</button>#}
+    {#                    </td>#}
+    {#                </tr>#}
+    {##}
+    {#            {% endfor %}#}
+    {#            </tbody>#}
+    {#        </table>#}
 
-                <a href="#" class="experience list-group-item list-group-item-action mb-2"
-                   data-action="click->experience--index#editForm"
-                   data-toggle="modal"
-                   data-target="#modal" data-id={{ experience.id }}>
+    <div class="row">
+        {% for experience in experiences %}
+            <div class="col-1">
+                <svg width="5em" height="2em" viewBox="0 0 16 16" class="bi bi-briefcase ">
+                    <path fill-rule="evenodd"
+                          d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6h-1v6a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-6H0v6z"/>
+                    <path fill-rule="evenodd"
+                          d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v2.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 6.884V4.5zM1.5 4a.5.5 0 0 0-.5.5v1.616l6.871 1.832a.5.5 0 0 0 .258 0L15 6.116V4.5a.5.5 0 0 0-.5-.5h-13zM5 2.5A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
+                </svg>
+            </div>
 
-                    <div class="d-sm-flex justify-content-between">
-                        <i class="fas fa-city"></i>
-                        <p class="mb-1">{{ experience.position }}</p>
+            <div class="col-7">
+                <div class="container-fluid">
+                    <a href="#" class="experience list-group-item-action mb-2"
+                       data-action="click->experience--index#editForm"
+                       data-toggle="modal"
+                       data-target="#modal" data-id={{ experience.id }}>
+                        <h5 class="mb-1 font-weight-bold">{{ experience.position }}</h5>
                         <p class="mb-1">{{ experience.company }}</p>
                         <p class="mb-1">{{ experience.date_start }}</p>
                         <p class="mb-1">{{ experience.date_end }}</p>
                         <p class="mb-1">{{ experience.region }}</p>
-                    </div>
-                </a>
+                        <p class="mb-1">{{ experience.description }}</p>
+                        <hr>
+                    </a>
+                </div>
+            </div>
 
-            {% endfor %}
-        </ul>
+            <div class="col-4 mt-5">
 
-        <button data-action="click->experience--index#loadForm" class="btn btn-outline-success" data-toggle="modal"
-                data-target="#modal"> Add experience
-        </button>
+                <button class="btn btn-outline-success mr-2"
+                        data-toggle="modal"
+                        data-target="#modal-delete">delete
+                </button>
+                <button class="btn btn-outline-success"
+                        data-action="click->experience--index#editForm"
+                        data-toggle="modal"
+                        data-target="#modal" data-id={{ experience.id }}>edit
+                </button>
 
+            </div>
+        {% endfor %}
     </div>
+</div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-controller="experience--edit">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h4 class="text-center">Do you realy want to delete this experience?</h4>
+            </div>
+            <div class="modal-footer align-bottom">
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-outline-success"
+                        data-action="click->experience--edit#deleteObject">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,18 +1,18 @@
-<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document" data-controller="education--new">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit experience</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Create education</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span class="modal-close" aria-hidden="true">&times</span>
             </button>
         </div>
         <div class="modal-body">
 
-            <form id="experienceForm" method="post" action="{% url 'blog:experience_edit' object.id %}">
+            <form id="educationFormNew" method="post" action="{% url 'blog:education_index' %}">
 
                 {% csrf_token %}
 
-                {% for field in exp_form %}
+                {% for field in form_education %}
                     <div class="form-group">
                         {% if field.errors %}
                             <div class="alert alert-danger">
@@ -26,8 +26,8 @@
 
             </form>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button form="experienceForm" class="btn btn-outline-success" id="modal-experience-btn"
-                    type="submit" value="Send">Update
+            <button form="educationFormNew" id="education-btn-new" class="btn btn-outline-success float-right"
+                    type="submit" value="Send" data-action="click->education--new#createEducation">Add
             </button>
         </div>
     </div>

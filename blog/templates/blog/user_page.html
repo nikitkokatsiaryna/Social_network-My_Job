@@ -11,19 +11,7 @@
                 <div data-load=true data-controller="experience--index">
                 </div>
 
-
-
-                <div class="card">
-                    <div class="card-header">
-                        Education
-                    </div>
-                    <div class="card-body">
-
-                        <button id='addEducation' class="btn btn-outline-success" data-toggle="modal"
-                                data-target="#modal"> Add education
-                        </button>
-
-                    </div>
+                <div data-load=true data-controller="education--index">
                 </div>
 
                 <div class="card">
@@ -32,9 +20,6 @@
                     </div>
 
                     <div class="card-body">
-
-{#                        <div data-controller="experiences">#}
-{#                        </div>#}
 
                         <button id='addSertificates' class="btn btn-outline-success" data-toggle="modal"
                                 data-target="#modal"> Add sertificates
@@ -62,17 +47,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- Modal experience -->
-    {#        {% include 'blog/experiences/index.html' %}#}
-    {##}
-    {#    {% include 'blog/experiences/experience_update.html' %}#}
-    {##}
-    {#    <!-- Modal education-->#}
-    {#    {% include 'blog/education/education_create.html' %}#}
 
 
 {% endblock %}

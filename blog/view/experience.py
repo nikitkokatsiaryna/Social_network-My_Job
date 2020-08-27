@@ -3,13 +3,16 @@ from django.views import View
 from django.shortcuts import render
 from ..form.experience import ExperienceForm
 from ..models import Experience
+from django.shortcuts import redirect
+from django.views.decorators.csrf import csrf_exempt
 
 
 class ExperienceView(View):
 
     def index(self, request):
         experiences = Experience.objects.filter(user=request.user)
-        return render(request, 'blog/experiences/index.html', {'experiences': experiences})
+        exp_count = experiences.count()
+        return render(request, 'blog/experiences/index.html', {'experiences': experiences, 'exp_count': range(exp_count)})
 
     def new(self, request):
         form_experience = ExperienceForm()
@@ -25,7 +28,8 @@ class ExperienceView(View):
             new_exp.user = request.user
             new_exp.save()
 
-            return render(request, template, {'form': new_exp})
+            return redirect('/user/')
+            # return render(request, template, {'form': new_exp})
 
         return render(request, template, {'form': bound_form})
 
@@ -47,11 +51,19 @@ class ExperienceView(View):
         exp_obj = Experience.objects.get(id=id)
         exp_form = ExperienceForm(request.POST, instance=exp_obj)
 
-        if exp_form.is_valid():
+        if exp_form.is_valid():  # field "region" after update is None
             exp_form.save()
 
     def destroy(self, request, id):
-        pass
+        exp_obj = Experience.objects.get(id=id)
+        exp_obj.delete()
+
+        context = {
+            'object': exp_obj,
+        }
+
+        return render(request, 'blog/experiences/index.html',
+                      context=context)  # после сообщения об успешном удалении перевести на главную страницу
 
     def get(self, request, *params):
         if re.match(r'.*new/?$', request.path):
@@ -64,10 +76,10 @@ class ExperienceView(View):
             return self.index(request, *params)
 
     def patch(self, request, *params):
-        self.update(request, *params)
+        return self.update(request, *params)
 
     def post(self, request, *params):
         return self.create(request, *params)
 
     def delete(self, request, *params):
-        self.destroy(request, *params)
+        return self.destroy(request, *params)

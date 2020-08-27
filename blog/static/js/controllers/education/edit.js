@@ -1,12 +1,11 @@
 export default class extends Stimulus.Controller {
 
     updateForm() {
-        let experienceId = this.element.dataset.experienceId
-
+        let educationId = this.element.dataset.experienceId
 
         $.ajax({
             type: 'PATCH',
-            url: `/experiences/${experienceId}/`,
+            url: `/education/${educationId}/`,
             headers: {
                 'X-CSRFToken': Cookies.get('csrftoken')
             },
@@ -21,6 +20,7 @@ export default class extends Stimulus.Controller {
         })
     }
 
+
     preDeleteObject() {
         let press
 
@@ -32,22 +32,20 @@ export default class extends Stimulus.Controller {
     }
 
     deleteObject() {
-        let experienceId = this.element.dataset.experienceId
+        let educationId = this.element.dataset.experienceId
 
 
         $.ajax({
             type: 'DELETE',
-            url: `/experiences/${experienceId}/`,
+            url: `/education/${educationId}/`,
             headers: {
                 'X-CSRFToken': Cookies.get('csrftoken')
             },
 
             success: (response) => {
-                debugger
                 toastr.success('Successfully deleted')
             },
             error: (xhr, errmsg, err) => {
-                debugger
                 toastr.error(errmsg)
             },
         })

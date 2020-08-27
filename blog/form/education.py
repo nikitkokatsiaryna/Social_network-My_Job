@@ -13,3 +13,8 @@ class EducationForm(forms.ModelForm):
         # fields = {'institution', 'user'}
         fields = '__all__'
         exclude = ('user',)
+
+        widgets = {
+            'date_start': forms.SelectDateWidget(attrs={'class': 'form-control'}),
+            'date_end': forms.SelectDateWidget(attrs={'class': 'form-control'}),
+        }

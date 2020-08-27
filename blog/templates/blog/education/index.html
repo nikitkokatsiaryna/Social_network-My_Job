@@ -1,0 +1,36 @@
+<div class="card" data-controller="education--index">
+
+    <div class="card-header">
+        Education
+    </div>
+
+    <div class="card-body">
+        <ul class="list-group">
+            {% for educate in education %}
+
+                <a href="#" class="education list-group-item list-group-item-action mb-2"
+                   data-action="click->education--index#editForm"
+                   data-toggle="modal"
+                   data-target="#modal" data-id={{ educate.id }}>
+
+                    <div class="d-sm-flex justify-content-between">
+                        <i class="fas fa-city"></i>
+                        <p class="mb-1">{{ educate.institution }}</p>
+                        <p class="mb-1">{{ educate.degree }}</p>
+                        <p class="mb-1">{{ educate.spezialisation }}</p>
+                        <p class="mb-1">{{ educate.date_start }}</p>
+                        <p class="mb-1">{{ educate.date_end }}</p>
+                        <p class="mb-1">{{ educate.description }}</p>
+                    </div>
+                </a>
+
+            {% endfor %}
+        </ul>
+
+        <button data-action="click->education--index#loadForm" class="btn btn-outline-success" data-toggle="modal"
+                data-target="#modal"> Add education
+        </button>
+
+    </div>
+
+</div>

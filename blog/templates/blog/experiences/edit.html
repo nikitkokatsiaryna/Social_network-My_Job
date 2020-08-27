@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
 
-            <form id="experienceForm" method="post" action="{% url 'blog:experience_edit' object.id %}">
+            <form id="experienceFormEdit" action="{% url 'blog:experience_edit' object.id %}">
 
                 {% csrf_token %}
 
@@ -27,8 +27,8 @@
                 {% endfor %}
 
             </form>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="experienceForm" class="btn btn-outline-success"
+            <button type="button" data-action="click->experience--edit#preDeleteObject" class="btn btn-secondary">Delete</button>
+            <button id="experience-btn-edit" class="btn btn-outline-success float-right"
                     data-action="click->experience--edit#updateForm"
                     type="submit" value="Send">Update
             </button>

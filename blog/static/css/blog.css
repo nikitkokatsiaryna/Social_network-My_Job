@@ -118,3 +118,10 @@ img.avatar {
     opacity: 0.5;
     height: 40px;
 }
+
+.text-description {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    padding: 5px; /* Поля */
+    /*text-overflow: ellipsis;*/
+}

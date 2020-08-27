@@ -4,12 +4,21 @@ export default class extends Stimulus.Controller {
         $.ajax({
             type: 'post',
             url: '/experiences/',
-            success: (response) => {
-                debugger
-                this.element.outerHTML = response
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken')
             },
-            error: (response) => {
+            success: (response) => {
+                // # Не заходит сюда
+
+
                 // debugger
+                // this.element.outerHTML = response
+                toastr.success('Successfully created.')
+
+                // $('.modal').fadeOut();
+            },
+            error: (xhr, errmsg, err) => {
+                toastr.error(errmsg)
             },
         })
     }

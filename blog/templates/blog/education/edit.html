@@ -1,18 +1,21 @@
-<div id="modal-experience-new" class="modal-dialog modal-dialog-scrollable modal-lg" role="document" data-controller="experience--new">
+<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document" data-controller="education--edit"
+     data-experience-id={{ object.id }}>
+
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Create experience</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit education</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span class="modal-close" aria-hidden="true">&times</span>
             </button>
         </div>
+
         <div class="modal-body">
 
-            <form id="experienceFormNew" method="post" action="{% url 'blog:experience_new' %}">
+            <form id="educationFormEdit" action="{% url 'blog:education_edit' object.id %}">
 
                 {% csrf_token %}
 
-                {% for field in form_experience %}
+                {% for field in form %}
                     <div class="form-group">
                         {% if field.errors %}
                             <div class="alert alert-danger">
@@ -25,9 +28,13 @@
                 {% endfor %}
 
             </form>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button form="experienceFormNew" id="experience-btn-new" class="btn btn-outline-success float-right"
-                    type="submit" value="Send" data-action="click->experience--new#createExperience">Add
+            <button type="button" class="btn btn-secondary" data-action="click->experience--edit#preDeleteObject"
+                    data-toggle="modal"
+                    data-target="#modal">Delete
+            </button>
+            <button id="education-btn-edit" class="btn btn-outline-success float-right"
+                    data-action="click->education--edit#updateForm"
+                    type="submit" value="Send">Update
             </button>
         </div>
     </div>

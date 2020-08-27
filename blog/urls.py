@@ -8,6 +8,8 @@ from django.contrib.auth import views as auth_views
 from .views import *
 from .view.experience import *
 from .view.registration import *
+from .view.education import *
+
 # from .view.user_page import *
 
 app_name = 'blog'
@@ -18,7 +20,7 @@ urlpatterns = [
     url(r'^logout-then-login/$', auth_views.logout_then_login, name='logout_then_login'),
     # url(r'^register/$', RegistrationView.as_view(), name='register'),
     url(r'^register/$', register, name='register'),
-    url(r'^user/$', UserView.as_view(), name='user_page_url'), # Заменить на UserView из view.user_page.py
+    url(r'^user/$', UserView.as_view(), name='user_page_url'),  # Заменить на UserView из view.user_page.py
 
     url(r'^experiences/?$', ExperienceView.as_view(), name='experience_index'),  # index, create
     url(r'^experiences/new/?$', ExperienceView.as_view(), name='experience_new'),  # new
@@ -26,4 +28,8 @@ urlpatterns = [
     url(r'^experiences/(\d+)/edit/?$', ExperienceView.as_view(), name='experience_edit'),  # edit
     # url(r'^experiences/(\d+)/?$', ExperienceView.as_view(), name='experience_update'),  # update, destroy
 
+    url(r'^education/?$', EducationView.as_view(), name='education_index'),  # index, create
+    url(r'^education/new/?$', EducationView.as_view(), name='education_new'),  # new
+    url(r'^education/(\d+)/?$', EducationView.as_view(), name='education_show'),  # show, update, destroy
+    url(r'^education/(\d+)/edit/?$', EducationView.as_view(), name='education_edit'),  # edit
 ]

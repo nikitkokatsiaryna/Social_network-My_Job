@@ -9,14 +9,25 @@ class EducationView(View):
 
     def index(self, request):
         education = Education.objects.filter(user=request.user)
-        return render(request, 'blog/experiences/index.html', {'education': education})
+        return render(request, 'blog/education/index.html', {'education': education})
 
     def new(self, request):
         form_education = EducationForm()
-        return render(request, 'blog/experiences/new.html', {'form_education': form_education})
+        return render(request, 'blog/education/new.html', {'form_education': form_education})
 
     def create(self, request):
-        pass
+        template = 'blog/education/index.html'
+
+        bound_form = EducationForm(request.POST)
+
+        if bound_form.is_valid():
+            new_exp = bound_form.save(commit=False)
+            new_exp.user = request.user
+            new_exp.save()
+
+            return render(request, template, {'form': new_exp})
+
+        return render(request, template, {'form': bound_form})
 
     def show(self, request, id):
         pass
@@ -30,14 +41,14 @@ class EducationView(View):
             'form': EducationForm(instance=education_obj),
         }
 
-        return render(request, 'blog/experiences/edit.html', context=context)
+        return render(request, 'blog/education/edit.html', context=context)
 
     def update(self, request, id):
-        exp_obj = Education.objects.get(id=id)
-        exp_form = EducationForm(request.POST, instance=exp_obj)
+        educ_obj = Education.objects.get(id=id)
+        educ_form = EducationForm(request.POST, instance=educ_obj)
 
-        if exp_form.is_valid():
-            exp_form.save()
+        if educ_form.is_valid():    # form.is_valid = False
+            educ_form.save()
 
     def destroy(self, request, id):
         pass
@@ -53,10 +64,10 @@ class EducationView(View):
             return self.index(request, *params)
 
     def post(self, request, *params):
-        self.create(request, *params)
+        return self.create(request, *params)
 
     def patch(self, request, *params):
-        self.update(request, *params)
+        return self.update(request, *params)
 
     def delete(self, request, *params):
         self.destroy(request, *params)

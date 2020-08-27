@@ -13,7 +13,7 @@ export default class extends Stimulus.Controller {
 
         $.ajax({
             type: 'get',
-            url: '/experiences/',
+            url: '/education/',
             success: (response) => {
                 // debugger
                 this.element.outerHTML = response
@@ -27,7 +27,7 @@ export default class extends Stimulus.Controller {
     loadForm() {
         $.ajax({
             type: 'get',
-            url: '/experiences/new',
+            url: '/education/new',
             success: (response) => {
                 this.getController('modal').element.innerHTML = response
             }
@@ -35,11 +35,11 @@ export default class extends Stimulus.Controller {
     }
 
     editForm(event) {
-        let experienceId = event.currentTarget.dataset.id;
+        let educationId = event.currentTarget.dataset.id;
 
         $.ajax({
             type: 'get',
-            url: `/experiences/${experienceId}/edit/`,
+            url: `/education/${educationId}/edit/`,
             success: (response) => {
                 // debugger
                 this.getController('modal').element.innerHTML = response
@@ -55,4 +55,5 @@ export default class extends Stimulus.Controller {
         if (!controller) throw `Controller '${identifier}' are not registered.`;
         return controller;
     }
+
 }
