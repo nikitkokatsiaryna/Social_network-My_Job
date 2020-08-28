@@ -12,7 +12,7 @@ const application = Stimulus.Application.start()
 
 application.register("experience--index", ExperienceIndex)
 application.register("experience--new", ExperienceNew)
-application.register("experience--edit", ExperienceEdit)
+// application.register("experience--edit", ExperienceEdit)
 
 application.register("education--index", EducationIndex)
 application.register("education--new", EducationNew)

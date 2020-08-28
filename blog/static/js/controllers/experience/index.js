@@ -55,4 +55,51 @@ export default class extends Stimulus.Controller {
         if (!controller) throw `Controller '${identifier}' are not registered.`;
         return controller;
     }
+
+    async deleteObject(event) {
+        let result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+        if (result.dismiss) return
+
+
+        let experienceId = event.target.dataset.id
+
+
+        $.ajax({
+            type: 'DELETE',
+            url: `/experiences/${experienceId}/`,
+            headers: {
+                'X-CSRFToken': Cookies.get('csrftoken')
+            },
+
+            success: (response) => {
+                debugger
+                // toastr.success('Successfully deleted')
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                );
+                this.load()
+            },
+            error: (responce) => {
+                debugger
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                })
+            },
+        })
+
+
+    }
+
 }

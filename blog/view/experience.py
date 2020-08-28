@@ -12,7 +12,8 @@ class ExperienceView(View):
     def index(self, request):
         experiences = Experience.objects.filter(user=request.user)
         exp_count = experiences.count()
-        return render(request, 'blog/experiences/index.html', {'experiences': experiences, 'exp_count': range(exp_count)})
+        return render(request, 'blog/experiences/index.html',
+                      {'experiences': experiences, 'exp_count': range(exp_count)})
 
     def new(self, request):
         form_experience = ExperienceForm()
@@ -51,8 +52,10 @@ class ExperienceView(View):
         exp_obj = Experience.objects.get(id=id)
         exp_form = ExperienceForm(request.POST, instance=exp_obj)
 
-        if exp_form.is_valid():  # field "region" after update is None
+        if exp_form.is_valid():
             exp_form.save()
+
+        return redirect('/user/')
 
     def destroy(self, request, id):
         exp_obj = Experience.objects.get(id=id)
@@ -63,7 +66,7 @@ class ExperienceView(View):
         }
 
         return render(request, 'blog/experiences/index.html',
-                      context=context)  # после сообщения об успешном удалении перевести на главную страницу
+                      context=context)
 
     def get(self, request, *params):
         if re.match(r'.*new/?$', request.path):
@@ -79,7 +82,13 @@ class ExperienceView(View):
         return self.update(request, *params)
 
     def post(self, request, *params):
-        return self.create(request, *params)
+        if '_method' in request.POST:
+            if request.POST['_method'].lower() == 'patch':
+                return self.patch(request, *params)
+            elif request.POST['_method'].lower() == 'delete':
+                return self.delete(request, *params)
+        else:
+            return self.create(request, *params)
 
     def delete(self, request, *params):
         return self.destroy(request, *params)

@@ -10,7 +10,8 @@
         </div>
         <div class="modal-body">
 
-            <form id="experienceFormEdit" action="{% url 'blog:experience_edit' object.id %}">
+            <form id="experienceFormEdit" method="POST" action="{% url 'blog:experience_show' object.id %}">
+                <input type="hidden" name="_method" value="PATCH">
 
                 {% csrf_token %}
 
@@ -23,13 +24,15 @@
                         {% endif %}
                         {{ field.label_tag }}
                         {{ field }}
+
                     </div>
                 {% endfor %}
 
             </form>
-            <button type="button" data-action="click->experience--edit#preDeleteObject" class="btn btn-secondary">Delete</button>
-            <button id="experience-btn-edit" class="btn btn-outline-success float-right"
-                    data-action="click->experience--edit#updateForm"
+            <button type="button" data-action="click->experience--edit#preDeleteObject" class="btn btn-secondary">
+                Delete
+            </button>
+            <button form="experienceFormEdit" id="experience-btn-edit" class="btn btn-outline-success float-right"
                     type="submit" value="Send">Update
             </button>
         </div>

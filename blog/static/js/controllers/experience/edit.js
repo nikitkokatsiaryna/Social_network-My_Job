@@ -11,11 +11,14 @@ export default class extends Stimulus.Controller {
                 'X-CSRFToken': Cookies.get('csrftoken')
             },
 
+
             success: (response) => {
                 debugger
-                this.element.outerHTML = response
+                toastr.success('Successfully created.')
+                // this.element.outerHTML = response
             },
             error: (xhr, errmsg, err) => {
+                debugger
                 toastr.error(errmsg)
             },
         })
@@ -31,25 +34,43 @@ export default class extends Stimulus.Controller {
         }
     }
 
-    deleteObject() {
-        let experienceId = this.element.dataset.experienceId
-
-
-        $.ajax({
-            type: 'DELETE',
-            url: `/experiences/${experienceId}/`,
-            headers: {
-                'X-CSRFToken': Cookies.get('csrftoken')
-            },
-
-            success: (response) => {
-                debugger
-                toastr.success('Successfully deleted')
-            },
-            error: (xhr, errmsg, err) => {
-                debugger
-                toastr.error(errmsg)
-            },
-        })
-    }
+    // async deleteObject() {
+    //     let result = await Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //     })
+    //     if (result.discard) return
+    //
+    //
+    //     let experienceId = this.element.dataset.experienceId
+    //
+    //
+    //     $.ajax({
+    //         type: 'DELETE',
+    //         url: `/experiences/${experienceId}/`,
+    //         headers: {
+    //             'X-CSRFToken': Cookies.get('csrftoken')
+    //         },
+    //
+    //         success: (response) => {
+    //             debugger
+    //             toastr.success('Successfully deleted')
+    //         },
+    //         error: (xhr, errmsg, err) => {
+    //             debugger
+    //             toastr.error(errmsg)
+    //         },
+    //     })
+    //
+    //     Swal.fire(
+    //         'Deleted!',
+    //         'Your file has been deleted.',
+    //         'success'
+    //     )
+    // }
 }
