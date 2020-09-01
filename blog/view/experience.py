@@ -4,16 +4,14 @@ from django.shortcuts import render
 from ..form.experience import ExperienceForm
 from ..models import Experience
 from django.shortcuts import redirect
-from django.views.decorators.csrf import csrf_exempt
 
 
 class ExperienceView(View):
 
     def index(self, request):
         experiences = Experience.objects.filter(user=request.user)
-        exp_count = experiences.count()
         return render(request, 'blog/experiences/index.html',
-                      {'experiences': experiences, 'exp_count': range(exp_count)})
+                      {'experiences': experiences})
 
     def new(self, request):
         form_experience = ExperienceForm()
@@ -78,9 +76,6 @@ class ExperienceView(View):
         else:
             return self.index(request, *params)
 
-    def patch(self, request, *params):
-        return self.update(request, *params)
-
     def post(self, request, *params):
         if '_method' in request.POST:
             if request.POST['_method'].lower() == 'patch':
@@ -89,6 +84,9 @@ class ExperienceView(View):
                 return self.delete(request, *params)
         else:
             return self.create(request, *params)
+
+    def patch(self, request, *params):
+        return self.update(request, *params)
 
     def delete(self, request, *params):
         return self.destroy(request, *params)

@@ -1,4 +1,5 @@
-<div id="modal-experience-new" class="modal-dialog modal-dialog-scrollable modal-lg" role="document" data-controller="experience--new">
+<div id="modal-experience-new" class="modal-dialog modal-dialog-scrollable modal-lg" role="document"
+     data-controller="experience--new">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Create experience</h5>
@@ -22,12 +23,15 @@
                         {{ field.label_tag }}
                         {{ field }}
                     </div>
+
                 {% endfor %}
 
+
             </form>
+
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button form="experienceFormNew" id="experience-btn-new" class="btn btn-outline-success float-right"
-                    type="submit" value="Send" data-action="click->experience--new#createExperience">Add
+                    type="submit" value="Send">Add
             </button>
         </div>
     </div>

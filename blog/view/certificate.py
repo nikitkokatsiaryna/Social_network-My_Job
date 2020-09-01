@@ -1,25 +1,25 @@
 import re
 from django.views import View
 from django.shortcuts import render
-from ..form.education import EducationForm
-from ..models import Education
+from ..form.certificates import CertificateForm
+from ..models import Certificate
 from django.shortcuts import redirect
 
 
-class EducationView(View):
+class CertificateView(View):
 
     def index(self, request):
-        education = Education.objects.filter(user=request.user)
-        return render(request, 'blog/education/index.html', {'education': education})
+        certificates = Certificate.objects.filter(user=request.user)
+        return render(request, 'blog/certificates/index.html', {'certificates': certificates})
 
     def new(self, request):
-        form_education = EducationForm()
-        return render(request, 'blog/education/new.html', {'form_education': form_education})
+        form_certificate = CertificateForm()
+        return render(request, 'blog/certificates/new.html', {'form_certificate': form_certificate})
 
     def create(self, request):
-        template = 'blog/education/index.html'
+        template = 'blog/certificate/index.html'
 
-        bound_form = EducationForm(request.POST)
+        bound_form = CertificateForm(request.POST)
 
         if bound_form.is_valid():
             new_exp = bound_form.save(commit=False)
@@ -27,7 +27,6 @@ class EducationView(View):
             new_exp.save()
 
             return redirect('/user/')
-            # return render(request, template, {'form': new_exp})
 
         return render(request, template, {'form': bound_form})
 
@@ -35,19 +34,19 @@ class EducationView(View):
         pass
 
     def edit(self, request, id):
-        education_obj = Education.objects.get(id=id)
+        certificate_obj = Certificate.objects.get(id=id)
 
         context = {
-            'object': education_obj,
+            'object': certificate_obj,
             'update': True,
-            'form': EducationForm(instance=education_obj),
+            'form': CertificateForm(instance=certificate_obj),
         }
 
-        return render(request, 'blog/education/edit.html', context=context)
+        return render(request, 'blog/certificates/edit.html', context=context)
 
     def update(self, request, id):
-        educ_obj = Education.objects.get(id=id)
-        educ_form = EducationForm(request.POST, instance=educ_obj)
+        educ_obj = Certificate.objects.get(id=id)
+        educ_form = CertificateForm(request.POST, instance=educ_obj)
 
         if educ_form.is_valid():
             educ_form.save()
@@ -55,14 +54,14 @@ class EducationView(View):
         return redirect('/user/')
 
     def destroy(self, request, id):
-        exp_obj = Education.objects.get(id=id)
+        exp_obj = Certificate.objects.get(id=id)
         exp_obj.delete()
 
         context = {
             'object': exp_obj,
         }
 
-        return render(request, 'blog/education/index.html',
+        return render(request, 'blog/certificates/index.html',
                       context=context)
 
     def get(self, request, *params):

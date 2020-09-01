@@ -59,7 +59,7 @@ export default class extends Stimulus.Controller {
     async deleteObject(event) {
         let result = await Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "Do you realy want to delete this experience?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -84,7 +84,7 @@ export default class extends Stimulus.Controller {
                 // toastr.success('Successfully deleted')
                 Swal.fire(
                     'Deleted!',
-                    'Your file has been deleted.',
+                    'Your experience has been deleted.',
                     'success'
                 );
                 this.load()

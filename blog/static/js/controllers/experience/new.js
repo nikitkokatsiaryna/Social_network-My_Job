@@ -1,24 +1,23 @@
 export default class extends Stimulus.Controller {
 
-    createExperience() {
+    async reateExperience() {
         $.ajax({
             type: 'post',
             url: '/experiences/',
-            headers: {
-                'X-CSRFToken': Cookies.get('csrftoken')
-            },
             success: (response) => {
-                // # Не заходит сюда
+                Swal.fire(
+                    'Created!',
+                    'Your education has been created.',
+                    'success'
+                );
 
-
-                // debugger
-                // this.element.outerHTML = response
-                toastr.success('Successfully created.')
-
-                // $('.modal').fadeOut();
             },
             error: (xhr, errmsg, err) => {
-                toastr.error(errmsg)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                })
             },
         })
     }

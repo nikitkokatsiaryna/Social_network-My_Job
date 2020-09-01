@@ -12,7 +12,7 @@ class ExperienceForm(forms.ModelForm):
         model = Experience
         # fields = {"position"}
         fields = '__all__'
-        # exclude = ('user',)
+        exclude = ('user',)
         employment_choices = (
             # ('Empty', '-'),
             ('FD', 'Full work day'),
@@ -24,9 +24,9 @@ class ExperienceForm(forms.ModelForm):
         )
         widgets = {
             'type_employment': forms.Select(choices=employment_choices, attrs={'class': 'form-control'}),
-            'date_start': forms.SelectDateWidget(attrs={'class': 'form-control'}),
-            'date_end': forms.SelectDateWidget(attrs={'class': 'form-control'}),
-            'user': forms.HiddenInput()
+            'date_start': forms.SelectDateWidget(attrs={'class': 'form-group'}),
+            'date_end': forms.SelectDateWidget(attrs={'class': 'form-group mx-sm-3 mb-2'}),
+            # 'user': forms.HiddenInput()
         }
 
         labels = {

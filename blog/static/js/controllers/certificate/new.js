@@ -1,13 +1,13 @@
 export default class extends Stimulus.Controller {
 
-    async createEducation() {
+    async createCertificate() {
         $.ajax({
             type: 'post',
-            url: '/education/',
+            url: '/certificate/',
             success: (response) => {
                 Swal.fire(
                     'Created!',
-                    'Your education has been created.',
+                    'Your certificate has been created.',
                     'success'
                 );
             },

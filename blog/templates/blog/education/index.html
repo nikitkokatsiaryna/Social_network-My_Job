@@ -10,7 +10,7 @@
 
     <div class="row">
         {% for educate in education %}
-            <div class="col-1">
+            <div class="col-1 mt-5">
                 <svg width="5em" height="2em" viewBox="0 0 16 16" class="bi bi-briefcase ">
                     <path fill-rule="evenodd"
                           d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6h-1v6a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-6H0v6z"/>
@@ -19,7 +19,7 @@
                 </svg>
             </div>
 
-            <div class="col-7">
+            <div class="col-9">
                 <div class="container-fluid">
                     <a href="#" class="education list-group-item-action mb-2"
                        data-action="click->education--index#editForm"
@@ -36,39 +36,16 @@
                 </div>
             </div>
 
-            <div class="col-4 mt-5">
-
-                <button class="btn btn-outline-success mr-2"
-                        data-toggle="modal"
-                        data-target="#modal-delete-education">delete
-                </button>
+            <div class="col-2 mt-5">
                 <button class="btn btn-outline-success"
                         data-action="click->education--index#editForm"
                         data-toggle="modal"
                         data-target="#modal" data-id={{ educate.id }}>edit
                 </button>
-
-            </div>
-        {% endfor %}
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="modal-delete-education" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true" data-controller="education--edit">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h4 class="text-center">Do you realy want to delete this education?</h4>
-            </div>
-            <div class="modal-footer align-bottom">
-                <button type="button" class="btn btn-outline-success" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-outline-success"
-                        data-action="click->education--edit#deleteObject">
-                    Yes
+                <button class="btn btn-outline-success mr-2"
+                        data-action="click->education--index#deleteObject" data-id={{ educate.id }}>delete
                 </button>
             </div>
-        </div>
+        {% endfor %}
     </div>
 </div>

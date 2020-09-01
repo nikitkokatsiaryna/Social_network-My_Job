@@ -1,17 +1,16 @@
-<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document" data-controller="education--edit"
+<div class="modal-dialog modal-dialog-scrollable modal-lg" role="document" data-controller="certificate--edit"
      data-experience-id={{ object.id }}>
 
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Edit education</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit certificate</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span class="modal-close" aria-hidden="true">&times</span>
             </button>
         </div>
-
         <div class="modal-body">
 
-            <form id="educationFormEdit" method="POST" action="{% url 'blog:education_show' object.id %}">
+            <form id="certificateFormEdit" method="POST" action="{% url 'blog:certificate_show' object.id %}">
                 <input type="hidden" name="_method" value="PATCH">
 
                 {% csrf_token %}
@@ -29,7 +28,7 @@
                 {% endfor %}
 
             </form>
-            <button form="educationFormEdit"  id="education-btn-edit" class="btn btn-outline-success float-right"
+            <button form="certificateFormEdit" id="certificate-btn-edit" class="btn btn-outline-success float-right"
                     type="submit" value="Send">Update
             </button>
         </div>

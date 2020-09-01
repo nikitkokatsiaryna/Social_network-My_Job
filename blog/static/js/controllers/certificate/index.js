@@ -13,7 +13,7 @@ export default class extends Stimulus.Controller {
 
         $.ajax({
             type: 'get',
-            url: '/education/',
+            url: '/certificate/',
             success: (response) => {
                 // debugger
                 this.element.outerHTML = response
@@ -27,7 +27,7 @@ export default class extends Stimulus.Controller {
     loadForm() {
         $.ajax({
             type: 'get',
-            url: '/education/new',
+            url: '/certificate/new',
             success: (response) => {
                 this.getController('modal').element.innerHTML = response
             }
@@ -35,11 +35,11 @@ export default class extends Stimulus.Controller {
     }
 
     editForm(event) {
-        let educationId = event.currentTarget.dataset.id;
+        let certificateId = event.currentTarget.dataset.id;
 
         $.ajax({
             type: 'get',
-            url: `/education/${educationId}/edit/`,
+            url: `/certificate/${certificateId}/edit/`,
             success: (response) => {
                 // debugger
                 this.getController('modal').element.innerHTML = response
@@ -69,12 +69,12 @@ export default class extends Stimulus.Controller {
         if (result.dismiss) return
 
 
-        let educationId = event.target.dataset.id
+        let certificateId = event.target.dataset.id
 
 
         $.ajax({
             type: 'DELETE',
-            url: `/education/${educationId}/`,
+            url: `/certificate/${certificateId}/`,
             headers: {
                 'X-CSRFToken': Cookies.get('csrftoken')
             },
