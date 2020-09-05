@@ -10,6 +10,7 @@ from .view.experience import *
 from .view.registration import *
 from .view.education import *
 from .view.certificate import *
+from .view.skills import *
 
 # from .view.user_page import *
 
@@ -38,4 +39,9 @@ urlpatterns = [
     url(r'^certificate/new/?$', CertificateView.as_view(), name='certificate_new'),  # new
     url(r'^certificate/(\d+)/?$', CertificateView.as_view(), name='certificate_show'),  # show, update, destroy
     url(r'^certificate/(\d+)/edit/?$', CertificateView.as_view(), name='certificate_edit'),  # edit
+
+    url(r'^skill/?$', SkillView.as_view(), name='skill_index'),  # index, create
+    url(r'^skill/new/?$', SkillView.as_view(), name='skill_new'),  # new
+    url(r'^skill/(\d+)/?$', SkillView.as_view(), name='skill_show'),  # show, update, destroy
+    url(r'^skill/(\d+)/edit/?$', SkillView.as_view(), name='skill_edit'),  # edit
 ]

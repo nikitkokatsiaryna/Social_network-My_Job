@@ -124,3 +124,30 @@ img.avatar {
     padding: 5px; /* Поля */
     /*text-overflow: ellipsis;*/
 }
+
+/*.form-calendar {*/
+/*    display: table-cell;*/
+/*    font-size: 14px;*/
+/*    width: 60px;*/
+/*    height: 40px;*/
+/*    !*background: gold;*!*/
+/*    text-align: center;*/
+/*    vertical-align: middle;*/
+/*}*/
+
+.form-calendar {
+    float: none; /*Задаем обтекание*/
+    line-height: 60px; /*Высота строки +  верт. центрирования текста*/
+    font-size: 14px;
+    /*background: dodgerblue;*/
+    color: black;
+    margin-top: 10px;
+    width: 80px; /*Фиксируем ширину блока*/
+    margin-right: 10px;
+    text-align: center;
+}
+
+.skill-name {
+    background-color: rgba(0,0,0,.03);
+    border-radius: 5px;
+}

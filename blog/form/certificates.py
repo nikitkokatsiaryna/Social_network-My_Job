@@ -5,8 +5,8 @@ from ..models import Certificate
 class CertificateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'form-control'
+        # for field in self.fields:
+        #     self.fields[field].widget.attrs['class'] = 'form-control'
 
     class Meta:
         model = Certificate
@@ -14,6 +14,9 @@ class CertificateForm(forms.ModelForm):
         exclude = ('user',)
 
         widgets = {
-            'date_start': forms.SelectDateWidget(attrs={'class': 'form-control'}),
-            'date_end': forms.SelectDateWidget(attrs={'class': 'form-control'}),
+            'date_start': forms.SelectDateWidget(attrs={'class': 'form-calendar'}),
+            'date_end': forms.SelectDateWidget(attrs={'class': 'form-calendar'}),
+            'checkbox': forms.CheckboxInput(
+                attrs={'class': 'checkbox', 'label': 'This certificate is perpetual'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
         }

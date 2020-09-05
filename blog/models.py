@@ -10,6 +10,7 @@ class Experience(models.Model):
     type_employment = models.CharField(max_length=2, null=True)
     company = models.CharField(max_length=100, null=True)
     region = models.CharField(max_length=50, blank=True, null=True)
+    checkbox = models.BooleanField(blank=True, default=False)
     date_start = models.DateField(default=datetime.now, null=True)
     date_end = models.DateField(default=datetime.now, null=True)
     description = models.TextField(blank=True, null=True)
@@ -37,9 +38,14 @@ class Education(models.Model):
 class Certificate(models.Model):
     name = models.CharField(max_length=150)
     department = models.CharField(max_length=150)
+    checkbox = models.BooleanField(blank=True, default=False)
     date_start = models.DateField(default=datetime.now, blank=True)
     date_end = models.DateField(default=datetime.now, blank=True)
     url_address = models.CharField(max_length=150, blank=True)
 
     user = models.ForeignKey(User, related_name='certificate_created', on_delete=models.CASCADE)
 
+
+class Skill(models.Model):
+    name = models.CharField(max_length=150)
+    user = models.ForeignKey(User, related_name='skill_created', on_delete=models.CASCADE)

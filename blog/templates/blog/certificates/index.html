@@ -1,6 +1,6 @@
 <div class="card" data-controller="certificate--index">
     <h5 class="card-header">
-        Certificate
+        Certificates
         <button data-action="click->certificate--index#loadForm" class="btn btn-outline-success float-right"
                 data-toggle="modal"
                 data-target="#modal"> Add certificate
@@ -36,15 +36,14 @@
             </div>
 
             <div class="col-2">
-                <button class="btn btn-outline-success"
-                        data-action="click->certificate--index#editForm"
-                        data-toggle="modal"
-                        data-target="#modal" data-id={{ certificate.id }}>edit
-                </button>
-                <button class="btn btn-outline-success m-auto"
-                        data-action="click->certificate--index#deleteObject" data-id={{ certificate.id }}>delete
-                </button>
-
+                <i class="btn-outline-success"
+                   data-action="click->certificate--index#editForm"
+                   data-toggle="modal"
+                   data-target="#modal" data-id={{ certificate.id }}>edit
+                </i>
+                <i class="btn-outline-success mr-2"
+                   data-action="click->certificate--index#deleteObject" data-id={{ certificate.id }}>delete
+                </i>
             </div>
         {% endfor %}
     </div>

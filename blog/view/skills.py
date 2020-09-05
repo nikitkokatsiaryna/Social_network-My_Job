@@ -1,25 +1,25 @@
 import re
 from django.views import View
 from django.shortcuts import render
-from ..form.experience import ExperienceForm
-from ..models import Experience
+from ..form.skills import SkillForm
+
+from ..models import Skill
 from django.shortcuts import redirect
 
 
-class ExperienceView(View):
+class SkillView(View):
 
     def index(self, request):
-        experiences = Experience.objects.filter(user=request.user)
-        return render(request, 'blog/experiences/index.html',
-                      {'experiences': experiences})
+        form_skills = SkillForm()
+        skills = Skill.objects.filter(user=request.user)
+        return render(request, 'blog/skills/index.html', {'skills': skills, 'form_skills': form_skills})
 
     def new(self, request):
-        form_experience = ExperienceForm()
-        return render(request, 'blog/experiences/new.html', {'form_experience': form_experience})
+        pass
 
     def create(self, request):
 
-        bound_form = ExperienceForm(request.POST)
+        bound_form = SkillForm(request.POST)
 
         if bound_form.is_valid():
             new_exp = bound_form.save(commit=False)
@@ -30,41 +30,39 @@ class ExperienceView(View):
 
         return redirect('/user/')
 
+        # return render(request, template, {'form': bound_form})
+
     def show(self, request, id):
         pass
 
     def edit(self, request, id):
-        exp_obj = Experience.objects.get(id=id)
+        # certificate_obj = Certificate.objects.get(id=id)
+        #
+        # context = {
+        #     'object': certificate_obj,
+        #     'update': True,
+        #     'form': CertificateForm(instance=certificate_obj),
+        # }
 
-        context = {
-            'object': exp_obj,
-            'update': True,
-            'exp_form': ExperienceForm(instance=exp_obj),
-        }
-
-        return render(request, 'blog/experiences/edit.html', context=context)
+        # return render(request, 'blog/certificates/edit.html', context=context)
+        pass
 
     def update(self, request, id):
-        exp_obj = Experience.objects.get(id=id)
-        exp_form = ExperienceForm(request.POST, instance=exp_obj)
-
-        if exp_form.is_valid():
-            exp_form.save()
-
-        return redirect('/user/')
+        pass
 
     def destroy(self, request, id):
-        exp_obj = Experience.objects.get(id=id)
+        exp_obj = Skill.objects.get(id=id)
         exp_obj.delete()
 
         context = {
             'object': exp_obj,
         }
 
-        return render(request, 'blog/experiences/index.html',
+        return render(request, 'blog/certificates/index.html',
                       context=context)
 
     def get(self, request, *params):
+
         if re.match(r'.*new/?$', request.path):
             return self.new(request, *params)
         elif re.match(r'.*edit/?$', request.path):

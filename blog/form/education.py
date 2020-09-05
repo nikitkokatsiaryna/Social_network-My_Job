@@ -3,18 +3,13 @@ from ..models import Education
 
 
 class EducationForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'form-control'
-
     class Meta:
         model = Education
-        # fields = {'institution', 'user'}
         fields = '__all__'
         exclude = ('user',)
 
         widgets = {
-            'date_start': forms.SelectDateWidget(attrs={'class': 'form-control'}),
-            'date_end': forms.SelectDateWidget(attrs={'class': 'form-control'}),
+            'date_start': forms.SelectDateWidget(attrs={'class': 'form-calendar'}),
+            'date_end': forms.SelectDateWidget(attrs={'class': 'form-calendar'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'})
         }

@@ -33,20 +33,18 @@
                         <p class="mb-1">{{ experience.description }}</p>
                         <hr>
                     </a>
-
-                    <input type="date" class="form-control" id="date" name="date" placeholder="Дата" required>
                 </div>
             </div>
 
             <div class="col-2">
-                <button class="btn btn-outline-success"
+                <i class="btn-outline-success"
                         data-action="click->experience--index#editForm"
                         data-toggle="modal"
                         data-target="#modal" data-id={{ experience.id }}>edit
-                </button>
-                <button class="btn btn-outline-success m-auto"
+                </i>
+                <i class="btn-outline-success mr-2"
                         data-action="click->experience--index#deleteObject" data-id={{ experience.id }}>delete
-                </button>
+                </i>
 
 
             </div>

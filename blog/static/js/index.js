@@ -7,6 +7,9 @@ import EducationNew from './controllers/education/new.js'
 import CertificateIndex from './controllers/certificate/index.js'
 import CertificateNew from './controllers/certificate/new.js'
 
+import SkillIndex from './controllers/skills/index.js'
+import SkillNew from './controllers/skills/new.js'
+
 import Modal from './controllers/modal.js'
 
 const application = Stimulus.Application.start()
@@ -19,5 +22,8 @@ application.register("education--new", EducationNew)
 
 application.register("certificate--index", CertificateIndex)
 application.register("certificate--new", CertificateNew)
+
+application.register("skill--index", SkillIndex)
+application.register("skill--new", SkillNew)
 
 application.register("modal", Modal)
