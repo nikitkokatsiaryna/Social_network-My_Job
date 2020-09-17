@@ -1,0 +1,77 @@
+{% load static %}
+<section class="section about-section gray-bg mb-3" id="about" data-controller="profile--index">
+
+    <div class="container">
+
+        <button data-action="click->profile--index#editForm"
+                class="btn btn-outline-success float-right"
+                data-toggle="modal"
+                data-target="#modal" data-id={{ user.profile.id }}> Edit
+        </button>
+
+        <div class="row align-items-center flex-row-reverse">
+            <div class="col-lg-7 mt-5">
+                <div class="about-text go-to">
+                    {% for field in profile %}
+                        <h3 class="dark-color">{{ field.first_name }} {{ field.last_name }}</h3>
+                        <h6 class="theme-color lead">{{ field.position }}</h6>
+                        <p class="mb-1">{{ field.location }}</p>
+                        <p class="mb-1">{{ field.web_sites }}</p>
+                        <p class="mb-1">{{ field.common_information }}</p>
+                        <div class="row about-list float-right">
+                            <div class="col">
+                                <div class="media">
+                                    <p>{{ field.e_mail }}</p>
+                                </div>
+                                <div class="media">
+                                    <p>{{ field.phone }}</p>
+                                </div>
+                                <div class="media">
+                                    <p>{{ field.web_sites }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="about-avatar">
+                    <img src="{{ request.user.profile.profile_image.url }}" title="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="counter">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="500" data-speed="500">500</h6>
+                        <p class="m-0px font-w-600">Experience</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                        <p class="m-0px font-w-600">Education</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                        <p class="m-0px font-w-600">Certificates</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="count-data text-center">
+                        <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                        <p class="m-0px font-w-600">Skills & Technologies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{#{% include 'blog/profile/modal_profile_image.html' %}#}

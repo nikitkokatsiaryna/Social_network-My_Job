@@ -1,0 +1,35 @@
+<div id="modal-profile-new" class="modal-dialog modal-dialog-scrollable modal-lg" role="document"
+     data-controller="profile--new">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span class="modal-close" aria-hidden="true">&times</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <form id="profileFormNew" method="post" action="{% url 'blog:profile_new' %}">
+
+                {% csrf_token %}
+
+                {% for field in form_profile %}
+                    <div class="form-group">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+
+            </form>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button form="profileFormNew" id="profile-btn-new" class="btn btn-outline-success float-right"
+                    type="submit" value="Send">Save
+            </button>
+        </div>
+    </div>
+</div>

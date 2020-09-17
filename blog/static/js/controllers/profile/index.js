@@ -13,7 +13,7 @@ export default class extends Stimulus.Controller {
 
         $.ajax({
             type: 'get',
-            url: '/skill/',
+            url: '/profile/',
             success: (response) => {
                 // debugger
                 this.element.outerHTML = response
@@ -27,7 +27,7 @@ export default class extends Stimulus.Controller {
     loadForm() {
         $.ajax({
             type: 'get',
-            url: '/skill/new',
+            url: '/profile/new',
             success: (response) => {
                 this.getController('modal').element.innerHTML = response
             }
@@ -35,11 +35,11 @@ export default class extends Stimulus.Controller {
     }
 
     editForm(event) {
-        let skillId = event.currentTarget.dataset.id;
+        let profileId = event.currentTarget.dataset.id;
 
         $.ajax({
             type: 'get',
-            url: `/skill/${skillId}/edit/`,
+            url: `/profile/${profileId}/edit/`,
             success: (response) => {
                 // debugger
                 this.getController('modal').element.innerHTML = response
@@ -69,20 +69,27 @@ export default class extends Stimulus.Controller {
         if (result.dismiss) return
 
 
-        let skillId = $(event.target).closest('[data-id]').data('id')
+        let certificateId = event.target.dataset.id
 
 
         $.ajax({
             type: 'DELETE',
-            url: `/skill/${skillId}/`,
+            // url: `/profile/${profileId}/`,
             headers: {
                 'X-CSRFToken': Cookies.get('csrftoken')
             },
 
             success: (response) => {
+                // debugger
+                Swal.fire(
+                    'Deleted!',
+                    'Your education has been deleted.',
+                    'success'
+                );
                 this.load()
             },
             error: (responce) => {
+                // debugger
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',

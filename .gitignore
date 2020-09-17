@@ -6,4 +6,6 @@ __pycache__/
 node_modules
 blog/static/libs/
 blog/static/.DS_Store
+blog/static/img
 .DS_Store
+blog/migrations

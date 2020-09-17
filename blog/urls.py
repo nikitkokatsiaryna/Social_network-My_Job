@@ -11,6 +11,7 @@ from .view.registration import *
 from .view.education import *
 from .view.certificate import *
 from .view.skills import *
+from .view.profile import *
 
 # from .view.user_page import *
 
@@ -20,6 +21,7 @@ urlpatterns = [
     url(r'^$', views.dashboard, name='dashboard'),
     url(r'^login/$', LoginView.as_view(template_name='blog/registration/login.html'), name='login'),
     url(r'^logout-then-login/$', auth_views.logout_then_login, name='logout_then_login'),
+    url(r'^sign_up/$', sign_up, name='sign_up'),
     # url(r'^register/$', RegistrationView.as_view(), name='register'),
     url(r'^register/$', register, name='register'),
     url(r'^user/$', UserView.as_view(), name='user_page_url'),  # Заменить на UserView из view.user_page.py
@@ -44,4 +46,9 @@ urlpatterns = [
     url(r'^skill/new/?$', SkillView.as_view(), name='skill_new'),  # new
     url(r'^skill/(\d+)/?$', SkillView.as_view(), name='skill_show'),  # show, update, destroy
     url(r'^skill/(\d+)/edit/?$', SkillView.as_view(), name='skill_edit'),  # edit
+
+    url(r'^profile/?$', ProfileView.as_view(), name='profile_index'),  # index, create
+    url(r'^profile/new/?$', ProfileView.as_view(), name='profile_new'),  # new
+    url(r'^profile/(\d+)/?$', ProfileView.as_view(), name='profile_show'),  # show, update, destroy
+    url(r'^profile/(\d+)/edit/?$', ProfileView.as_view(), name='profile_edit'),  # edit
 ]

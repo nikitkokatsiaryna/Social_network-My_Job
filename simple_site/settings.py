@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'django_seed',
-
+    'django_fields',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = ['dist']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # LOGIN_REDIRECT_URL : Сообщает о том, на какой URL-адрес перенаправлять пользователя после входа в систему.
 # LOGIN_URL : URL-адрес для перенаправления пользователя на вход (например, с помощью декоратора login_required)
@@ -140,3 +141,6 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = reverse_lazy('blog:user_page_url')
 LOGIN_URL = reverse_lazy('blog:login')
 LOGOUT_URL = reverse_lazy('blog:logout_then_login')
+
+MEDIA_URL = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/static/img/')

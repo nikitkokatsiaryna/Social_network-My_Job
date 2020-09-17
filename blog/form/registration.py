@@ -1,11 +1,11 @@
 from django import forms
-from ..models import User
+from ..models import User, Profile
 from django.contrib.auth.password_validation import validate_password
 
 
-class LoginForm(forms.Form):
-    user_name = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+# class LoginForm(forms.Form):
+#     user_name = forms.CharField()
+#     password = forms.CharField(widget=forms.PasswordInput)
 
 
 class RegistrationForm(forms.ModelForm):
@@ -27,6 +27,14 @@ class RegistrationForm(forms.ModelForm):
         try:
             validate_password(password1, self.instance)
         except forms.ValidationError as error:
+
             # Method inherited from BaseForm
             self.add_error('password1', error)
         return password1
+
+
+class SignUpForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name']
