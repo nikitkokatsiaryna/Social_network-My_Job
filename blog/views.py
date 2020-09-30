@@ -11,13 +11,6 @@ def dashboard(request):
     return render(request, 'blog/dashboard.html')
 
 
-class UserView(View):
+class HomeView(View):
     def get(self, request):
-        form_experience = ExperienceForm()
-        experience = Experience.objects.filter(user=request.user)
-        education = Education.objects.filter(user=request.user.id)
-
-        context = {'experience': experience,
-                   'education': education, 'form_experience': form_experience}
-
-        return render(request, 'blog/user_page.html', context)
+        return render(request, 'blog/user_page.html')

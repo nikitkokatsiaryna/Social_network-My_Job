@@ -16,18 +16,40 @@ class Profile(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     web_sites = models.URLField(max_length=200, blank=True)
     common_information = models.TextField(max_length=500, blank=True)
-    profile_image = DefaultStaticImageField(blank=True, null=True, default_image_path='img/unnamed.jpg')
+    profile_image = DefaultStaticImageField(blank=True, null=True, default_image_path='img/blog/unnamed.jpg')
 
 
 @receiver(post_save, sender=User)
 def create_user_profile(instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(user=instance, first_name=instance.first_name, last_name=instance.last_name)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class Friend(models.Model):
+    users = models.ManyToManyField(User)
+    current_user = models.ForeignKey(User, related_name="owner", null=True, on_delete=models.CASCADE)
+
+    @classmethod
+    def make_friend(cls, current_user, new_friend):
+        friend, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        friend.users.add(new_friend)
+
+    @classmethod
+    def lose_friend(cls, current_user, new_friend):
+        friend, created = cls.objects.get_or_create(
+            current_user=current_user
+        )
+        friend.users.remove(new_friend)
+
+    def __str__(self):
+        return str(self.current_user)
 
 
 class Experience(models.Model):

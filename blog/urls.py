@@ -12,6 +12,7 @@ from .view.education import *
 from .view.certificate import *
 from .view.skills import *
 from .view.profile import *
+from .view.friends import *
 
 # from .view.user_page import *
 
@@ -21,10 +22,9 @@ urlpatterns = [
     url(r'^$', views.dashboard, name='dashboard'),
     url(r'^login/$', LoginView.as_view(template_name='blog/registration/login.html'), name='login'),
     url(r'^logout-then-login/$', auth_views.logout_then_login, name='logout_then_login'),
-    url(r'^sign_up/$', sign_up, name='sign_up'),
     # url(r'^register/$', RegistrationView.as_view(), name='register'),
     url(r'^register/$', register, name='register'),
-    url(r'^user/$', UserView.as_view(), name='user_page_url'),  # Заменить на UserView из view.user_page.py
+    url(r'^user/$', HomeView.as_view(), name='user_page_url'),  # Заменить на UserView из view.user_page.py
 
     url(r'^experiences/?$', ExperienceView.as_view(), name='experience_index'),  # index, create
     url(r'^experiences/new/?$', ExperienceView.as_view(), name='experience_new'),  # new
@@ -51,4 +51,8 @@ urlpatterns = [
     url(r'^profile/new/?$', ProfileView.as_view(), name='profile_new'),  # new
     url(r'^profile/(\d+)/?$', ProfileView.as_view(), name='profile_show'),  # show, update, destroy
     url(r'^profile/(\d+)/edit/?$', ProfileView.as_view(), name='profile_edit'),  # edit
+
+    url(r'^friend/?$', FriendView.as_view(), name='friends'),
+    url(r'^friend/(?P<operation>.+)/(?P<id>\d+)/$', FriendView.change_friends, name='change_friends'),
+    url(r'^user/friend/(\d+)/show/?$', FriendView.as_view(), name='show_friend_page'),
 ]

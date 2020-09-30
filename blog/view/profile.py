@@ -4,7 +4,6 @@ from django.shortcuts import render
 from ..form.profile import ProfileForm
 from ..models import Profile
 from django.shortcuts import redirect
-from django.core.files.storage import FileSystemStorage
 
 
 class ProfileView(View):
@@ -19,7 +18,9 @@ class ProfileView(View):
         pass
 
     def show(self, request, id):
-        pass
+        user = Profile.objects.get(id=id)
+
+        return render(request, 'blog/user_page.html', {'user': user})
 
     def edit(self, request, id):
         profile_obj = Profile.objects.get(id=id)
@@ -53,7 +54,6 @@ class ProfileView(View):
         return render(request, 'blog/profile/index.html',
                       context=context)
 
-
     def get(self, request, *params):
         if re.match(r'.*new/?$', request.path):
             return self.new(request, *params)
@@ -63,7 +63,6 @@ class ProfileView(View):
             return self.show(request, *params)
         else:
             return self.index(request, *params)
-
 
     def post(self, request, *params):
         if '_method' in request.POST:

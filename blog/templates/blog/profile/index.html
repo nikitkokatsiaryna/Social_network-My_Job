@@ -4,7 +4,7 @@
     <div class="container">
 
         <button data-action="click->profile--index#editForm"
-                class="btn btn-outline-success float-right"
+                class="btn buttons float-right"
                 data-toggle="modal"
                 data-target="#modal" data-id={{ user.profile.id }}> Edit
         </button>
@@ -14,7 +14,7 @@
                 <div class="about-text go-to">
                     {% for field in profile %}
                         <h3 class="dark-color">{{ field.first_name }} {{ field.last_name }}</h3>
-                        <h6 class="theme-color lead">{{ field.position }}</h6>
+                        <h6 class="dark-color lead">{{ field.position }}</h6>
                         <p class="mb-1">{{ field.location }}</p>
                         <p class="mb-1">{{ field.web_sites }}</p>
                         <p class="mb-1">{{ field.common_information }}</p>
@@ -42,6 +42,7 @@
                     <img src="{{ request.user.profile.profile_image.url }}" title="" alt="">
                 </div>
             </div>
+
         </div>
         <div class="counter">
             <div class="row">
@@ -73,5 +74,3 @@
         </div>
     </div>
 </section>
-
-{#{% include 'blog/profile/modal_profile_image.html' %}#}

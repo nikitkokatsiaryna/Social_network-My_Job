@@ -1,7 +1,7 @@
 <div class="card" data-controller="experience--index">
     <h5 class="card-header">
         Experience
-        <button data-action="click->experience--index#loadForm" class="btn btn-outline-success float-right"
+        <button data-action="click->experience--index#loadForm" class="btn float-right buttons"
                 data-toggle="modal"
                 data-target="#modal"> Add experience
         </button>
@@ -37,12 +37,12 @@
             </div>
 
             <div class="col-2">
-                <i class="btn-outline-success"
+                <i class="buttons"
                         data-action="click->experience--index#editForm"
                         data-toggle="modal"
                         data-target="#modal" data-id={{ experience.id }}>edit
                 </i>
-                <i class="btn-outline-success mr-2"
+                <i class="buttons mr-5"
                         data-action="click->experience--index#deleteObject" data-id={{ experience.id }}>delete
                 </i>
 
@@ -51,43 +51,3 @@
         {% endfor %}
     </div>
 </div>
-
-
-{#        <table class="table col-lg-10">#}
-{#            <thead>#}
-{#            <tr>#}
-{#                <th scope="col"></th>#}
-{#                <th scope="col">Position</th>#}
-{#                <th scope="col">Company</th>#}
-{#                <th scope="col">Data start</th>#}
-{#                <th scope="col">Date end</th>#}
-{#                <th scope="col">Region</th>#}
-{#                <th scope="col">Description</th>#}
-{#            </tr>#}
-{#            </thead>#}
-{#            <tbody>#}
-{#            {% for experience in experiences %}#}
-{#                <tr class="experience"#}
-{#                    data-action="click->experience--index#editForm"#}
-{#                    data-toggle="modal"#}
-{#                    data-target="#modal"#}
-{#                    data-id={{ experience.id }}>#}
-{##}
-{#                    <td><i class="fas fa-city"></i></td>#}
-{#                    <td>{{ experience.position }}</td>#}
-{#                    <td>{{ experience.company }}</td>#}
-{#                    <td>{{ experience.date_start }}</td>#}
-{#                    <td>{{ experience.date_end }}</td>#}
-{#                    <td>{{ experience.region }}</td>#}
-{#                    <td class="text-description">{{ experience.description }}</td>#}
-{#                </tr>#}
-{##}
-{#                <tr class="col-sm-1">#}
-{#                    <td align="center">#}
-{#                        <button class="col-lg-11">delete</button>#}
-{#                    </td>#}
-{#                </tr>#}
-{##}
-{#            {% endfor %}#}
-{#            </tbody>#}
-{#        </table>#}

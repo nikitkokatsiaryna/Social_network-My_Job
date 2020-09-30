@@ -2,7 +2,7 @@
 
     <h5 class="card-header">
         Education
-        <button data-action="click->education--index#loadForm" class="btn btn-outline-success float-right"
+        <button data-action="click->education--index#loadForm" class="btn buttons float-right"
                 data-toggle="modal"
                 data-target="#modal">Add education
         </button>
@@ -37,12 +37,12 @@
             </div>
 
             <div class="col-2">
-                <i class="btn-outline-success"
+                <i class="buttons"
                    data-action="click->education--index#editForm"
                    data-toggle="modal"
                    data-target="#modal" data-id={{ educate.id }}>edit
                 </i>
-                <i class="btn-outline-success mr-2"
+                <i class="buttons mr-5"
                    data-action="click->education--index#deleteObject" data-id={{ educate.id }}>delete
                 </i>
             </div>

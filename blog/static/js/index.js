@@ -13,6 +13,8 @@ import SkillNew from './controllers/skills/new.js'
 import ProfileIndex from './controllers/profile/index.js'
 import ProfileEdit from './controllers/profile/edit.js'
 
+import FriendIndex from './controllers/friends/index.js'
+
 import Modal from './controllers/modal.js'
 
 const application = Stimulus.Application.start()
@@ -31,5 +33,8 @@ application.register("skill--new", SkillNew)
 
 application.register("profile--index", ProfileIndex)
 application.register("profile--edit", ProfileEdit)
+
+application.register("friend--index", FriendIndex)
+
 
 application.register("modal", Modal)
