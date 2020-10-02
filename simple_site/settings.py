@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'blog',
     'django_seed',
     'django_fields',
-    'widget_tweaks',
+    # 'widget_tweaks',
 ]
 
 MIDDLEWARE = [
