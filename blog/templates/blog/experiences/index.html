@@ -1,5 +1,5 @@
 <div class="card" data-controller="experience--index">
-    <h5 class="card-header">
+    <h5 class="card-header" style='background-color:#b1baec21;'>
         Experience
         <button data-action="click->experience--index#loadForm" class="btn float-right buttons"
                 data-toggle="modal"
@@ -37,14 +37,14 @@
             </div>
 
             <div class="col-2">
-                <i class="buttons"
+                <button class="buttons mr-5 mt-3 border"
                         data-action="click->experience--index#editForm"
                         data-toggle="modal"
                         data-target="#modal" data-id={{ experience.id }}>edit
-                </i>
-                <i class="buttons mr-5"
+                </button>
+                <button class="buttons mr-5 mt-3 border"
                         data-action="click->experience--index#deleteObject" data-id={{ experience.id }}>delete
-                </i>
+                </button>
 
 
             </div>

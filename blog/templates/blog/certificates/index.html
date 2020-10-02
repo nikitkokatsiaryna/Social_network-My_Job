@@ -1,5 +1,5 @@
 <div class="card" data-controller="certificate--index">
-    <h5 class="card-header">
+    <h5 class="card-header" style='background-color:#b1baec21;'>
         Certificates
         <button data-action="click->certificate--index#loadForm" class="btn buttons float-right"
                 data-toggle="modal"
@@ -37,14 +37,14 @@
             </div>
 
             <div class="col-2">
-                <i class="buttons"
+                <button class="buttons mr-5 mt-3 border"
                    data-action="click->certificate--index#editForm"
                    data-toggle="modal"
                    data-target="#modal" data-id={{ certificate.id }}>edit
-                </i>
-                <i class="buttons mr-5"
+                </button>
+                <button class="buttons mr-5 mt-3 border"
                    data-action="click->certificate--index#deleteObject" data-id={{ certificate.id }}>delete
-                </i>
+                </button>
             </div>
         {% endfor %}
     </div>

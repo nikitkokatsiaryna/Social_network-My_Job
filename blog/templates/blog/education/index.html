@@ -1,6 +1,6 @@
 <div class="card" data-controller="education--index">
 
-    <h5 class="card-header">
+    <h5 class="card-header" style='background-color:#b1baec21;'>
         Education
         <button data-action="click->education--index#loadForm" class="btn buttons float-right"
                 data-toggle="modal"
@@ -37,14 +37,14 @@
             </div>
 
             <div class="col-2">
-                <i class="buttons"
+                <button class="buttons mr-5 mt-3 border"
                    data-action="click->education--index#editForm"
                    data-toggle="modal"
                    data-target="#modal" data-id={{ educate.id }}>edit
-                </i>
-                <i class="buttons mr-5"
+                </button>
+                <button class="buttons mr-5 mr-5 mt-3 border"
                    data-action="click->education--index#deleteObject" data-id={{ educate.id }}>delete
-                </i>
+                </button>
             </div>
         {% endfor %}
     </div>

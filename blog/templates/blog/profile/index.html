@@ -1,5 +1,5 @@
 {% load static %}
-<section class="section about-section gray-bg mb-3" id="about" data-controller="profile--index">
+<section class="section about-section mb-3" id="about" data-controller="profile--index">
 
     <div class="container">
 
@@ -13,21 +13,18 @@
             <div class="col-lg-7 mt-5">
                 <div class="about-text go-to">
                     {% for field in profile %}
-                        <h3 class="dark-color">{{ field.first_name }} {{ field.last_name }}</h3>
+                        <h4 class="dark-color">{{ field.first_name }} {{ field.last_name }}</h4>
                         <h6 class="dark-color lead">{{ field.position }}</h6>
                         <p class="mb-1">{{ field.location }}</p>
-                        <p class="mb-1">{{ field.web_sites }}</p>
+                        <p>{{ field.e_mail }}</p>
                         <p class="mb-1">{{ field.common_information }}</p>
                         <div class="row about-list float-right">
                             <div class="col">
                                 <div class="media">
-                                    <p>{{ field.e_mail }}</p>
-                                </div>
-                                <div class="media">
                                     <p>{{ field.phone }}</p>
                                 </div>
                                 <div class="media">
-                                    <p>{{ field.web_sites }}</p>
+                                    <p class="mb-1">{{ field.web_sites }}</p>
                                 </div>
                             </div>
                         </div>

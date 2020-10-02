@@ -5,7 +5,7 @@
         <h3>All users</h3>
         {% for user in users %}
             {% if user.is_staff == False %}
-                <nav class="navbar navbar-light bg-light mb-2">
+                <nav class="navbar navbar-friend navbar-light bg-light mb-2">
                     <a class="navbar-brand" data-action="click->friend--index#showFriend" data-id={{ user.id }}>
                         <img src="{{ request.user.profile.profile_image.url }}" width="30" height="30"
                              class="d-inline-block align-top">
@@ -531,7 +531,7 @@
         <h3>Friends</h3>
 
         {% for friend in friends %}
-            <nav class="navbar navbar-light bg-light mb-2">
+            <nav class="navbar navbar-friend navbar-light mb-2">
                 <a class="navbar-brand" href='{% url 'blog:user_page_url' %}'>
                     <img src="{{ request.user.profile.profile_image.url }}" width="30" height="30"
                          class="d-inline-block align-top">
