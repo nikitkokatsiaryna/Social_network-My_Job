@@ -9,7 +9,7 @@ class EducationForm(forms.ModelForm):
         exclude = ('user',)
 
         widgets = {
-            'date_start': forms.SelectDateWidget(attrs={'class': 'form-calendar'}),
-            'date_end': forms.SelectDateWidget(attrs={'class': 'form-calendar'}),
+            'date_start': forms.SelectDateWidget(attrs={'class': 'form-calendar'}, years=range(1900, 2100)),
+            'date_end': forms.SelectDateWidget(attrs={'class': 'form-calendar'}, years=range(1900, 2100)),
             'description': forms.Textarea(attrs={'class': 'form-control'})
         }

@@ -2,14 +2,13 @@ import re
 from django.views import View
 from django.shortcuts import render
 from ..form.profile import ProfileForm
-from ..models import Profile
+from ..models import *
 from django.shortcuts import redirect
 
 
 class ProfileView(View):
-    def index(self, request):
-        profile = Profile.objects.filter(user=request.user)
-        return render(request, 'blog/profile/index.html', {'profile': profile})
+    def index(self, request, id):
+        pass
 
     def new(self, request):
         pass
@@ -18,9 +17,9 @@ class ProfileView(View):
         pass
 
     def show(self, request, id):
-        user = Profile.objects.get(id=id)
+        profile = Profile.objects.filter(id=id)
 
-        return render(request, 'blog/user_page.html', {'user': user})
+        return render(request, 'blog/profile/index.html', {'profile': profile})
 
     def edit(self, request, id):
         profile_obj = Profile.objects.get(id=id)

@@ -79,9 +79,7 @@ class Education(models.Model):
 class Certificate(models.Model):
     name = models.CharField(max_length=150)
     department = models.CharField(max_length=150)
-    checkbox = models.BooleanField(blank=True, default=False)
     date_start = models.DateField(default=datetime.now, blank=True)
-    date_end = models.DateField(default=datetime.now, blank=True)
     url_address = models.CharField(max_length=150, blank=True)
 
     user = models.ForeignKey(User, related_name='certificate_created', on_delete=models.CASCADE)

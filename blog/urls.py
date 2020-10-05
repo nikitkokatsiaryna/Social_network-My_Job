@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^logout-then-login/$', auth_views.logout_then_login, name='logout_then_login'),
     # url(r'^register/$', RegistrationView.as_view(), name='register'),
     url(r'^register/$', register, name='register'),
-    url(r'^user/$', HomeView.as_view(), name='user_page_url'),  # Заменить на UserView из view.user_page.py
+    url(r'^user/?$', HomeView.as_view(), name='user_page_url'),
+    url(r'^user/(\d+)/?$', HomeView.as_view(), name='user_page_url'),  # Заменить на UserView из view.user_page.py
 
     url(r'^experiences/?$', ExperienceView.as_view(), name='experience_index'),  # index, create
     url(r'^experiences/new/?$', ExperienceView.as_view(), name='experience_new'),  # new
@@ -47,12 +48,12 @@ urlpatterns = [
     url(r'^skill/(\d+)/?$', SkillView.as_view(), name='skill_show'),  # show, update, destroy
     url(r'^skill/(\d+)/edit/?$', SkillView.as_view(), name='skill_edit'),  # edit
 
-    url(r'^profile/?$', ProfileView.as_view(), name='profile_index'),  # index, create
+    url(r'^profile/(\d+)/?$', ProfileView.as_view(), name='profile_index'),  # index, create
     url(r'^profile/new/?$', ProfileView.as_view(), name='profile_new'),  # new
     url(r'^profile/(\d+)/?$', ProfileView.as_view(), name='profile_show'),  # show, update, destroy
     url(r'^profile/(\d+)/edit/?$', ProfileView.as_view(), name='profile_edit'),  # edit
 
-    url(r'^friend/?$', FriendView.as_view(), name='friends'),
+    url(r'^friend/$', FriendView.as_view(), name='friends'),
     url(r'^friend/(?P<operation>.+)/(?P<id>\d+)/$', FriendView.change_friends, name='change_friends'),
     url(r'^user/friend/(\d+)/show/?$', FriendView.as_view(), name='show_friend_page'),
 ]

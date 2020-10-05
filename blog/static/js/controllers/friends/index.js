@@ -25,18 +25,18 @@ export default class extends Stimulus.Controller {
         })
     }
 
-    showFriend(event) {
-        let friendId = event.currentTarget.dataset.id;
-
-        $.ajax({
-            type: 'get',
-            url: `friend/${friendId}/show/`,
-            success: (response) => {
-                debugger
-                this.element.outerHTML = response
-            },
-        })
-    }
+    // showFriend(event) {
+    //     let friendId = event.currentTarget.dataset.id;
+    //
+    //     $.ajax({
+    //         type: 'get',
+    //         url: `friend/${friendId}/show/`,
+    //         success: (response) => {
+    //             debugger
+    //             this.element.outerHTML = response
+    //         },
+    //     })
+    // }
 
     // scroll() {
     //     $.ajax({

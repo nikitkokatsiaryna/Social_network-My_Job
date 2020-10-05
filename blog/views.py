@@ -12,5 +12,9 @@ def dashboard(request):
 
 
 class HomeView(View):
-    def get(self, request):
-        return render(request, 'blog/user_page.html')
+    def get(self, request, id=None):
+        if id is None:
+            return render(request, 'blog/user_page.html')
+        else:
+            user = User.objects.get(id=id)
+            return render(request, 'blog/user_page.html', {'user': user})

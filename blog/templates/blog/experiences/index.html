@@ -21,11 +21,13 @@
 
             <div class="col-9">
                 <div class="container-fluid">
+                    <h5 class="mb-3 mt-3 font-weight-bold">{{ experience.position }}</h5>
+
                     <a href="#" class="experience list-group-item-action mb-2"
                        data-action="click->experience--index#editForm"
                        data-toggle="modal"
                        data-target="#modal" data-id={{ experience.id }}>
-                        <h5 class="mb-1 font-weight-bold">{{ experience.position }}</h5>
+                        {#                        <h5 class="mb-1 font-weight-bold">{{ experience.position }}</h5>#}
                         <p class="mb-1">{{ experience.company }}</p>
                         <p class="mb-1">{{ experience.date_start }}</p>
                         <p class="mb-1">{{ experience.date_end }}</p>
@@ -45,7 +47,6 @@
                 <button class="buttons mr-5 mt-3 border"
                         data-action="click->experience--index#deleteObject" data-id={{ experience.id }}>delete
                 </button>
-
 
             </div>
         {% endfor %}

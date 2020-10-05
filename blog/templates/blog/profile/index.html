@@ -6,7 +6,7 @@
         <button data-action="click->profile--index#editForm"
                 class="btn buttons float-right"
                 data-toggle="modal"
-                data-target="#modal" data-id={{ user.profile.id }}> Edit
+                data-target="#modal" data-id={{ profile.0.id }}> Edit
         </button>
 
         <div class="row align-items-center flex-row-reverse">
@@ -36,7 +36,7 @@
 
             <div class="col-lg-5">
                 <div class="about-avatar">
-                    <img src="{{ request.user.profile.profile_image.url }}" title="" alt="">
+                    <img src="{{ profile.0.profile_image.url }}" title="" alt="">
                 </div>
             </div>
 

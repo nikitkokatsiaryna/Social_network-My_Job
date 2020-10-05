@@ -21,29 +21,34 @@
             </div>
 
             <div class="col-9">
+
+                <h5 class="mb-1 font-weight-bold">{{ certificate.name }}</h5>
                 <div class="container-fluid">
                     <a href="#" class="certificate list-group-item-action mb-2"
                        data-action="click->certificate--index#editForm"
                        data-toggle="modal"
                        data-target="#modal" data-id={{ certificate.id }}>
-                        <h5 class="mb-1 font-weight-bold">{{ certificate.name }}</h5>
-                        <p class="mb-1">{{ certificate.department }}</p>
-                        <p class="mb-1">{{ certificate.date_start }}</p>
-                        <p class="mb-1">{{ certificate.date_end }}</p>
-                        <p class="mb-1">{{ certificate.url_address }}</p>
-                        <hr>
+
+                        <div>
+                            <p class="mb-1">{{ certificate.department }}</p>
+                            <p class="mb-1">{{ certificate.date_start }}</p>
+                            <p class="mb-1">{{ certificate.date_end }}</p>
+                            <p class="mb-1">{{ certificate.url_address }}</p>
+                            <hr>
+                        </div>
+
                     </a>
                 </div>
             </div>
 
             <div class="col-2">
                 <button class="buttons mr-5 mt-3 border"
-                   data-action="click->certificate--index#editForm"
-                   data-toggle="modal"
-                   data-target="#modal" data-id={{ certificate.id }}>edit
+                        data-action="click->certificate--index#editForm"
+                        data-toggle="modal"
+                        data-target="#modal" data-id={{ certificate.id }}>edit
                 </button>
                 <button class="buttons mr-5 mt-3 border"
-                   data-action="click->certificate--index#deleteObject" data-id={{ certificate.id }}>delete
+                        data-action="click->certificate--index#deleteObject" data-id={{ certificate.id }}>delete
                 </button>
             </div>
         {% endfor %}

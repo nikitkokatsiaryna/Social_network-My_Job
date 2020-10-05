@@ -9,9 +9,9 @@ from django.shortcuts import redirect
 
 class SkillView(View):
 
-    def index(self, request):
+    def index(self, request, user_id=None):
         form_skills = SkillForm()
-        skills = Skill.objects.filter(user=request.user)
+        skills = Skill.objects.filter(user=request.GET['user_id'])
         return render(request, 'blog/skills/index.html', {'skills': skills, 'form_skills': form_skills})
 
     def new(self, request):

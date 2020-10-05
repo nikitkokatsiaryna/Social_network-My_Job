@@ -13,6 +13,9 @@ from ..form.profile import ProfileForm
 class FriendView(View):
 
     def index(self, request):
+        # TODO: сделать ассоциацию Profile.friends
+        #   в одной табличке хранить связи Friends
+
         users = User.objects.exclude(id=request.user.id)
         try:
             friend = Friend.objects.get(current_user=request.user)

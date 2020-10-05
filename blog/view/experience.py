@@ -8,8 +8,8 @@ from django.shortcuts import redirect
 
 class ExperienceView(View):
 
-    def index(self, request):
-        experiences = Experience.objects.filter(user=request.user)
+    def index(self, request, user_id=None):
+        experiences = Experience.objects.filter(user=request.GET['user_id'])
         return render(request, 'blog/experiences/index.html',
                       {'experiences': experiences})
 
@@ -30,7 +30,7 @@ class ExperienceView(View):
 
         return redirect('/user/')
 
-    def show(self, request, id):
+    def show(self, request, user_id):
         pass
 
     def edit(self, request, id):

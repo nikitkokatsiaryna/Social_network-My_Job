@@ -9,19 +9,19 @@
 
 
             <div class="card card-body">
-                <div data-load=true data-controller="profile--index">
+                <div data-load=true data-url="{% url 'blog:profile_index' user.profile.id %}" data-controller="profile--index">
                 </div>
 
-                <div data-load=true data-controller="experience--index">
+                <div data-load=true data-url="/experiences?user_id={{ user.id }}" data-controller="experience--index">
                 </div>
 
-                <div data-load=true data-controller="education--index">
+                <div data-load=true data-url="/education?user_id={{ user.id }}" data-controller="education--index">
                 </div>
 
-                <div data-load=true data-controller="certificate--index">
+                <div data-load=true data-url="/certificate?user_id={{ user.id }}" data-controller="certificate--index">
                 </div>
 
-                <div data-load=true data-controller="skill--index">
+                <div data-load=true data-url="/skill?user_id={{ user.id }}" data-controller="skill--index">
                 </div>
 
             </div>

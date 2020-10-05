@@ -1,4 +1,6 @@
-export default class extends Stimulus.Controller {
+import BaseController from '../base.js'
+
+export default class extends BaseController {
 
     static targets = ["name"]
 
@@ -9,20 +11,6 @@ export default class extends Stimulus.Controller {
         }
     }
 
-    load() {
-
-        $.ajax({
-            type: 'get',
-            url: '/skill/',
-            success: (response) => {
-                // debugger
-                this.element.outerHTML = response
-            },
-            error: (response) => {
-                // debugger
-            },
-        })
-    }
 
     loadForm() {
         $.ajax({
@@ -50,11 +38,6 @@ export default class extends Stimulus.Controller {
         })
     }
 
-    getController(identifier) {
-        const controller = this.application.controllers.find(controller => controller.identifier === identifier);
-        if (!controller) throw `Controller '${identifier}' are not registered.`;
-        return controller;
-    }
 
     async deleteObject(event) {
         let result = await Swal.fire({

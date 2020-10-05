@@ -8,8 +8,8 @@ from django.shortcuts import redirect
 
 class CertificateView(View):
 
-    def index(self, request):
-        certificates = Certificate.objects.filter(user=request.user)
+    def index(self, request, user_id=None):
+        certificates = Certificate.objects.filter(user=request.GET['user_id'])
         return render(request, 'blog/certificates/index.html', {'certificates': certificates})
 
     def new(self, request):

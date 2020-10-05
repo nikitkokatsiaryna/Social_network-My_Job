@@ -8,8 +8,8 @@ from django.shortcuts import redirect
 
 class EducationView(View):
 
-    def index(self, request):
-        education = Education.objects.filter(user=request.user)
+    def index(self, request, user_id=None):
+        education = Education.objects.filter(user=request.GET['user_id'])
         return render(request, 'blog/education/index.html', {'education': education})
 
     def new(self, request):
