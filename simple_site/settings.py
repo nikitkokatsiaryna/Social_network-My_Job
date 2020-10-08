@@ -82,6 +82,7 @@ DATABASES = {
             'read_default_file': '~/PycharmProjects/example_simple_site/my.cnf',
             "init_command": "SET foreign_key_checks = 0;",
         },
+        'PORT': '3307'
     }
 }
 
