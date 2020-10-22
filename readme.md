@@ -14,13 +14,13 @@ Website made with Python (Django)
 
 - Log in <br>
 
-    ![img](img/log_in.png)
+    ![img](img/s.png)
 
 - Register
 
     If you don't have an account yet, you can register
 
-    ![img](img/signup.png)
+    ![img](img/q.png)
 
 - Account
 
